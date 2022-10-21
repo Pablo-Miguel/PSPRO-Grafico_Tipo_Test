@@ -103,6 +103,7 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="grupoRadio"/>
         </Property>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="radioOpcion4">
@@ -110,11 +111,13 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="grupoRadio"/>
         </Property>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtFieldOpcion1">
       <Properties>
         <Property name="text" type="java.lang.String" value="Escriba respuesta..."/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtFieldOpcion1MouseClicked"/>
@@ -123,6 +126,7 @@
     <Component class="javax.swing.JTextField" name="txtFieldOpcion2">
       <Properties>
         <Property name="text" type="java.lang.String" value="Escriba respuesta..."/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtFieldOpcion2MouseClicked"/>
@@ -131,6 +135,7 @@
     <Component class="javax.swing.JTextField" name="txtFieldOpcion3">
       <Properties>
         <Property name="text" type="java.lang.String" value="Escriba respuesta..."/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtFieldOpcion3MouseClicked"/>
@@ -147,6 +152,7 @@
     <Component class="javax.swing.JTextField" name="txtFieldOpcion4">
       <Properties>
         <Property name="text" type="java.lang.String" value="Escriba respuesta..."/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtFieldOpcion4MouseClicked"/>
@@ -185,6 +191,7 @@
     <Component class="javax.swing.JTextField" name="txtFieldPregunta">
       <Properties>
         <Property name="text" type="java.lang.String" value="Escriba una pregunta..."/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtFieldPreguntaMouseClicked"/>
@@ -195,7 +202,7 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="grupoRadio"/>
         </Property>
-        <Property name="selected" type="boolean" value="true"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="radioOpcion2">
@@ -203,6 +210,7 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="grupoRadio"/>
         </Property>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
   </SubComponents>

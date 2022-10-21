@@ -16,25 +16,27 @@ import javax.swing.JOptionPane;
  * @author Dam
  */
 public class Vista_MiPanel_Nuevo extends javax.swing.JPanel {
-    
+
     private Vista_MiVentana miVentana;
     private Vista_MiPanel_Inicio miPanelInicio;
-    
+    private Boolean continuar;
     private ArrayList<Pregunta> listaPreguntas;
-    
+
     private DefaultListModel modelo;
-    
+
     /**
      * Creates new form Vista_MiPanel_Nuevo
      */
     public Vista_MiPanel_Nuevo(Vista_MiVentana miVentana) {
         initComponents();
-        
+
+        continuar = false;
+
         this.miVentana = miVentana;
         this.miPanelInicio = new Vista_MiPanel_Inicio(this.miVentana);
-        
+
         this.actualizarLista();
-        
+
     }
 
     /**
@@ -78,7 +80,6 @@ public class Vista_MiPanel_Nuevo extends javax.swing.JPanel {
         });
 
         grupoRadio.add(radioOpcion1);
-        radioOpcion1.setSelected(true);
 
         grupoRadio.add(radioOpcion2);
 
@@ -187,13 +188,13 @@ public class Vista_MiPanel_Nuevo extends javax.swing.JPanel {
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         // TODO add your handling code here:
-        
+
         txtFieldPregunta.setText("Escriba una pregunta...");
         txtFieldOpcion1.setText("Escriba respuesta...");
         txtFieldOpcion2.setText("Escriba respuesta...");
         txtFieldOpcion3.setText("Escriba respuesta...");
         txtFieldOpcion4.setText("Escriba respuesta...");
-        
+
         this.miVentana.cambiarPanel(this.miPanelInicio);
     }//GEN-LAST:event_btnVolverActionPerformed
 
@@ -224,48 +225,51 @@ public class Vista_MiPanel_Nuevo extends javax.swing.JPanel {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
-        if(!(txtFieldPregunta.getText().equals("Escriba una pregunta...") || txtFieldPregunta.getText().equals("")
-        || txtFieldOpcion1.getText().equals("Escriba respuesta...") || txtFieldOpcion1.getText().equals("")
-        || txtFieldOpcion2.getText().equals("Escriba respuesta...") || txtFieldOpcion2.getText().equals("")
-        || txtFieldOpcion3.getText().equals("Escriba respuesta...") || txtFieldOpcion3.getText().equals("")
-        || txtFieldOpcion4.getText().equals("Escriba respuesta...") || txtFieldOpcion4.getText().equals(""))
-        ){
-            
-            if(radioOpcion1.isSelected()){
+        if (!(txtFieldPregunta.getText().equals("Escriba una pregunta...") || txtFieldPregunta.getText().equals("")
+                || txtFieldOpcion1.getText().equals("Escriba respuesta...") || txtFieldOpcion1.getText().equals("")
+                || txtFieldOpcion2.getText().equals("Escriba respuesta...") || txtFieldOpcion2.getText().equals("")
+                || txtFieldOpcion3.getText().equals("Escriba respuesta...") || txtFieldOpcion3.getText().equals("")
+                || txtFieldOpcion4.getText().equals("Escriba respuesta...") || txtFieldOpcion4.getText().equals(""))) {
+
+            if (radioOpcion1.isSelected()) {
 
                 DAOPregunta.getInstance().setDatos(new Pregunta(txtFieldPregunta.getText(), new Opcion(txtFieldOpcion1.getText(), true), new Opcion(txtFieldOpcion2.getText(), false), new Opcion(txtFieldOpcion3.getText(), false), new Opcion(txtFieldOpcion4.getText(), false)));
-
-            }else if(radioOpcion2.isSelected()){
+                continuar = true;
+            } else if (radioOpcion2.isSelected()) {
 
                 DAOPregunta.getInstance().setDatos(new Pregunta(txtFieldPregunta.getText(), new Opcion(txtFieldOpcion1.getText(), false), new Opcion(txtFieldOpcion2.getText(), true), new Opcion(txtFieldOpcion3.getText(), false), new Opcion(txtFieldOpcion4.getText(), false)));
-
-            }else if(radioOpcion3.isSelected()){
+                continuar = true;
+            } else if (radioOpcion3.isSelected()) {
 
                 DAOPregunta.getInstance().setDatos(new Pregunta(txtFieldPregunta.getText(), new Opcion(txtFieldOpcion1.getText(), false), new Opcion(txtFieldOpcion2.getText(), false), new Opcion(txtFieldOpcion3.getText(), true), new Opcion(txtFieldOpcion4.getText(), false)));
-
-            }else if(radioOpcion4.isSelected()){
+                continuar = true;
+            } else if (radioOpcion4.isSelected()) {
 
                 DAOPregunta.getInstance().setDatos(new Pregunta(txtFieldPregunta.getText(), new Opcion(txtFieldOpcion1.getText(), false), new Opcion(txtFieldOpcion2.getText(), false), new Opcion(txtFieldOpcion3.getText(), false), new Opcion(txtFieldOpcion4.getText(), true)));
-
+                continuar = true;
             }
 
-            this.actualizarLista();
+            if (continuar) {
+                this.actualizarLista();
 
-            Integer opcion = JOptionPane.showConfirmDialog(this, "Se ha guardado la pregunta correctamente", "Guardado correcto", JOptionPane.DEFAULT_OPTION);
-            
-            txtFieldPregunta.setText("Escriba una pregunta...");
-            txtFieldOpcion1.setText("Escriba respuesta...");
-            txtFieldOpcion2.setText("Escriba respuesta...");
-            txtFieldOpcion3.setText("Escriba respuesta...");
-            txtFieldOpcion4.setText("Escriba respuesta...");
-        
-        }
-        else{
-            
+                Integer opcion = JOptionPane.showConfirmDialog(this, "Se ha guardado la pregunta correctamente", "Guardado correcto", JOptionPane.DEFAULT_OPTION);
+
+                txtFieldPregunta.setText("Escriba una pregunta...");
+                txtFieldOpcion1.setText("Escriba respuesta...");
+                txtFieldOpcion2.setText("Escriba respuesta...");
+                txtFieldOpcion3.setText("Escriba respuesta...");
+                txtFieldOpcion4.setText("Escriba respuesta...");   
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Porfavor, seleccione la opcion correcta para guardar");
+            }
+
+        } else {
+
             Integer opcion = JOptionPane.showConfirmDialog(this, "No se ha añadido nueva pregunta a la bbdd", "Error al añadir", JOptionPane.DEFAULT_OPTION);
-            
+
         }
-      
+
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -287,17 +291,17 @@ public class Vista_MiPanel_Nuevo extends javax.swing.JPanel {
 
     private void actualizarLista() {
         listaPreguntas = DAOPregunta.getInstance().getDatos();
-        
+
         this.modelo = new DefaultListModel();
-        
-        for(int i = 0; i < listaPreguntas.size(); i++){
+
+        for (int i = 0; i < listaPreguntas.size(); i++) {
             this.modelo.addElement(listaPreguntas.get(i).getTituloPreg());
         }
-        
+
         this.listaJPreguntas.setModel(this.modelo);
 
         this.listaJPreguntas.setEnabled(false);
-        
+
         this.updateUI();
     }
 }

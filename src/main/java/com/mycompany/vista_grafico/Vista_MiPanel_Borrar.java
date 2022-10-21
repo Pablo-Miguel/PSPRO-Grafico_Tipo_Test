@@ -107,7 +107,6 @@ public class Vista_MiPanel_Borrar extends javax.swing.JPanel {
         radioOpcion3.setEnabled(false);
 
         grupoRadio.add(radioOpcion1);
-        radioOpcion1.setSelected(true);
         radioOpcion1.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

@@ -62,10 +62,13 @@ public class Vista_MiPanel_Actualizar extends javax.swing.JPanel {
         radioOpcion2 = new javax.swing.JRadioButton();
 
         grupoRadio.add(radioOpcion3);
+        radioOpcion3.setEnabled(false);
 
         grupoRadio.add(radioOpcion4);
+        radioOpcion4.setEnabled(false);
 
         txtFieldOpcion1.setText("Escriba respuesta...");
+        txtFieldOpcion1.setEnabled(false);
         txtFieldOpcion1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtFieldOpcion1MouseClicked(evt);
@@ -73,6 +76,7 @@ public class Vista_MiPanel_Actualizar extends javax.swing.JPanel {
         });
 
         txtFieldOpcion2.setText("Escriba respuesta...");
+        txtFieldOpcion2.setEnabled(false);
         txtFieldOpcion2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtFieldOpcion2MouseClicked(evt);
@@ -80,6 +84,7 @@ public class Vista_MiPanel_Actualizar extends javax.swing.JPanel {
         });
 
         txtFieldOpcion3.setText("Escriba respuesta...");
+        txtFieldOpcion3.setEnabled(false);
         txtFieldOpcion3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtFieldOpcion3MouseClicked(evt);
@@ -94,6 +99,7 @@ public class Vista_MiPanel_Actualizar extends javax.swing.JPanel {
         });
 
         txtFieldOpcion4.setText("Escriba respuesta...");
+        txtFieldOpcion4.setEnabled(false);
         txtFieldOpcion4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtFieldOpcion4MouseClicked(evt);
@@ -115,6 +121,7 @@ public class Vista_MiPanel_Actualizar extends javax.swing.JPanel {
         });
 
         txtFieldPregunta.setText("Escriba una pregunta...");
+        txtFieldPregunta.setEnabled(false);
         txtFieldPregunta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtFieldPreguntaMouseClicked(evt);
@@ -122,9 +129,10 @@ public class Vista_MiPanel_Actualizar extends javax.swing.JPanel {
         });
 
         grupoRadio.add(radioOpcion1);
-        radioOpcion1.setSelected(true);
+        radioOpcion1.setEnabled(false);
 
         grupoRadio.add(radioOpcion2);
+        radioOpcion2.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -301,6 +309,16 @@ public class Vista_MiPanel_Actualizar extends javax.swing.JPanel {
 
     private void listaJPreguntasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaJPreguntasMouseClicked
         // TODO add your handling code here:
+        
+        txtFieldPregunta.setEnabled(true);
+        txtFieldOpcion1.setEnabled(true);
+        txtFieldOpcion2.setEnabled(true);
+        txtFieldOpcion3.setEnabled(true);
+        txtFieldOpcion4.setEnabled(true);
+        radioOpcion1.setEnabled(true);
+        radioOpcion2.setEnabled(true);
+        radioOpcion3.setEnabled(true);
+        radioOpcion4.setEnabled(true);
         
         this.txtFieldPregunta.setText(DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getTituloPreg());
         if(DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion1().isCorrecto()){

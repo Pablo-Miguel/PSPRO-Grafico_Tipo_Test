@@ -8,43 +8,47 @@ import com.mycompany.modelo_grafico.Opcion;
 import com.mycompany.modelo_grafico.Pregunta;
 import com.mycompany.servicio_grafico.Servicio;
 import java.util.ArrayList;
+import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Dam
  */
 public class Vista_MiPanel_Preg extends javax.swing.JPanel {
-    
+
     private Vista_MiVentana miVentana;
     private Vista_MiPanel_Resul miPanelResul;
-    
+    private Boolean continuar;
     private Integer pregunta = 0;
     private Servicio servicio;
     private ArrayList<Pregunta> listaPreguntas;
     private ArrayList<Opcion> listaAciertos;
-    
+
     /**
      * Creates new form Vista_MiPanel_Preg1
      */
     public Vista_MiPanel_Preg(Vista_MiVentana miVentana, ArrayList<Pregunta> listaPreguntas) {
         initComponents();
-        
+
+        continuar = false;
+
         this.miVentana = miVentana;
-        
+
         servicio = new Servicio();
-        
+
         listaAciertos = new ArrayList<Opcion>();
-        
+
         this.listaPreguntas = listaPreguntas;
-        
+
         lblPregunta.setText(listaPreguntas.get(pregunta).getTituloPreg());
-        
+
         radioOpcion1.setText(listaPreguntas.get(pregunta).getOpcion1().getTxtOpcion());
-        
+
         radioOpcion2.setText(listaPreguntas.get(pregunta).getOpcion2().getTxtOpcion());
-        
+
         radioOpcion3.setText(listaPreguntas.get(pregunta).getOpcion3().getTxtOpcion());
-        
+
         radioOpcion4.setText(listaPreguntas.get(pregunta).getOpcion4().getTxtOpcion());
     }
 
@@ -74,7 +78,6 @@ public class Vista_MiPanel_Preg extends javax.swing.JPanel {
 
         grupoRadio.add(radioOpcion1);
         radioOpcion1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        radioOpcion1.setSelected(true);
         radioOpcion1.setText("Opcion1");
         radioOpcion1.setToolTipText("");
 
@@ -108,7 +111,7 @@ public class Vista_MiPanel_Preg extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(91, 91, 91)
                 .addComponent(lblTimer, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 259, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(radioOpcion2)
                     .addComponent(radioOpcion1)
@@ -130,7 +133,7 @@ public class Vista_MiPanel_Preg extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                         .addComponent(lblTimer, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(72, 72, 72))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -149,47 +152,56 @@ public class Vista_MiPanel_Preg extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
-        
-        if(radioOpcion1.isSelected()){
-                
+
+        if (radioOpcion1.isSelected()) {
+
             listaAciertos.add(listaPreguntas.get(pregunta).getOpcion1());
-        
-        }else if(radioOpcion2.isSelected()){
-                
+            continuar = true;
+        } else if (radioOpcion2.isSelected()) {
+
             listaAciertos.add(listaPreguntas.get(pregunta).getOpcion2());
-        
-        }else if(radioOpcion3.isSelected()){
-                
+            continuar = true;
+        } else if (radioOpcion3.isSelected()) {
+
             listaAciertos.add(listaPreguntas.get(pregunta).getOpcion3());
-        
-        }else if(radioOpcion4.isSelected()){
-                
+            continuar = true;
+        } else if (radioOpcion4.isSelected()) {
+
             listaAciertos.add(listaPreguntas.get(pregunta).getOpcion4());
-        
+            continuar = true;
         }
-        
-        pregunta++;
-        
-        if(pregunta < listaPreguntas.size()){
-            
-            lblPregunta.setText(listaPreguntas.get(pregunta).getTituloPreg());
-            
-            radioOpcion1.setSelected(true);
-            radioOpcion1.setText(listaPreguntas.get(pregunta).getOpcion1().getTxtOpcion());
 
-            radioOpcion2.setText(listaPreguntas.get(pregunta).getOpcion2().getTxtOpcion());
+        if (continuar) {
+            pregunta++;
 
-            radioOpcion3.setText(listaPreguntas.get(pregunta).getOpcion3().getTxtOpcion());
-            
-            radioOpcion4.setText(listaPreguntas.get(pregunta).getOpcion4().getTxtOpcion());
+            if (pregunta < listaPreguntas.size()) {
+
+                lblPregunta.setText(listaPreguntas.get(pregunta).getTituloPreg());
+                
+                grupoRadio.clearSelection();
+                
+                radioOpcion1.setText(listaPreguntas.get(pregunta).getOpcion1().getTxtOpcion());
+                
+                radioOpcion2.setText(listaPreguntas.get(pregunta).getOpcion2().getTxtOpcion());
+                
+                radioOpcion3.setText(listaPreguntas.get(pregunta).getOpcion3().getTxtOpcion());
+                
+                radioOpcion4.setText(listaPreguntas.get(pregunta).getOpcion4().getTxtOpcion());
+                
+                this.updateUI();
+            } else {
+
+                miPanelResul = new Vista_MiPanel_Resul(miVentana, listaAciertos);
+
+                miVentana.cambiarPanel(miPanelResul);
+            }
         }
-        else {
-            
-            miPanelResul = new Vista_MiPanel_Resul(miVentana, listaAciertos);
-            
-            miVentana.cambiarPanel(miPanelResul);
+        else{
+            JOptionPane.showMessageDialog(this, "Porfavor, seleccione una de las opciones para avanzar");
         }
-        
+
+        continuar = false;
+
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
 

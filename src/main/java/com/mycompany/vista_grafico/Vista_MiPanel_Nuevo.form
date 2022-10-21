@@ -138,7 +138,6 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="grupoRadio"/>
         </Property>
-        <Property name="selected" type="boolean" value="true"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="radioOpcion2">
