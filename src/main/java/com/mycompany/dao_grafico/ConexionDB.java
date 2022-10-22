@@ -4,6 +4,7 @@
  */
 package com.mycompany.dao_grafico;
 
+import com.mycompany.modelo_grafico.Opcion;
 import com.mycompany.modelo_grafico.Pregunta;
 import java.sql.*;
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ public class ConexionDB {
     static Statement st = null;
     static ResultSet rs = null;
     static PreparedStatement stmt = null;
-    static String bd = "vehiculos";
+    static String bd = "graficotest";
     static String login = "root";
     static String password = "";
     static String url = "jdbc:mysql://localhost/" + bd;
@@ -45,16 +46,43 @@ public class ConexionDB {
         enlace();
 
         try {
+
             st = conn.createStatement();
 
-            String sql = "INSERT INTO vehiculo (Marca, Modelo, Matricula) VALUES (?, ?, ?);";
+            ArrayList<Integer> listaIds = new ArrayList<Integer>();
+            String sql = "";
+            
+            for (int i = 1; i <= 4; i++) {
+
+                sql = "SELECT MAX(Id_opcion) + 1 AS ID_MAX FROM Opciones_table;";
+                stmt = conn.prepareStatement(sql);
+                System.out.println(stmt.toString());
+                rs = stmt.executeQuery();
+                
+                if(rs.next()){
+                    listaIds.add(rs.getInt("ID_MAX"));
+                }
+
+                sql = "INSERT INTO Opciones_table (Id_opcion, Texto, Correcto) VALUES (?, ?, ?);";
+                stmt = conn.prepareStatement(sql);
+                stmt.setInt(1, listaIds.get(i));
+                stmt.setString(2, pregunta.getOpcion1().getTxtOpcion());
+                stmt.setBoolean(3, pregunta.getOpcion1().isCorrecto());
+                System.out.println(stmt.toString());
+                stmt.execute();
+
+            }
+
+            sql = "INSERT INTO Pregunta_table (Pregunta, Id_opcion1, Id_opcion2, Id_opcion3, Id_opcion4) VALUES (?, ?, ?, ?, ?);";
             stmt = conn.prepareStatement(sql);
-            stmt.setString(1, vehiculo.getMarca());
-            stmt.setString(2, vehiculo.getModelo());
-            stmt.setString(3, vehiculo.getMatricula());
+            stmt.setString(1, pregunta.getTituloPreg());
+            stmt.setInt(2, listaIds.get(0));
+            stmt.setInt(3, listaIds.get(1));
+            stmt.setInt(4, listaIds.get(2));
+            stmt.setInt(5, listaIds.get(3));
             System.out.println(stmt.toString());
             stmt.execute();
-            //rs = st.executeQuery("INSERT INTO vehiculo (Marca, Modelo, Matricula) VALUES (\"" + vehiculo.getMarca() + "\", \"" + vehiculo.getModelo()+ "\", \"" + vehiculo.getMatricula()+ "\");");
+
         } catch (SQLIntegrityConstraintViolationException ex) {
             System.out.println("Error SQL: " + ex.toString());
             throw new SQLIntegrityConstraintViolationException();
@@ -70,18 +98,47 @@ public class ConexionDB {
     public static List<Pregunta> getPreguntas() {
 
         enlace();
-        List<Vehiculo> listaVehiculos = null;
+        List<Pregunta> listaPreguntas = null;
 
         try {
             st = conn.createStatement();
 
-            rs = st.executeQuery("SELECT * FROM vehiculo");
-            System.out.println("SELECT * FROM vehiculo");
+            String sql = "SELECT CONT(Id_pregunta) AS CONT FROM Pregunta_table";
+            stmt = conn.prepareStatement(sql);
+            System.out.println(stmt.toString());
+            rs = stmt.executeQuery();
 
-            listaVehiculos = new ArrayList<Vehiculo>();
-            while (rs.next()) {
-                listaVehiculos.add(new Vehiculo(rs.getString("Marca"), rs.getString("Modelo"), rs.getString("Matricula")));
+            Integer cont = 0;
+            if (rs.next()) {
+                cont = rs.getInt("CONT");
             }
+
+            if (cont != 0) {
+
+                listaPreguntas = new ArrayList<Pregunta>();
+                ArrayList<Opcion> listaOpciones = new ArrayList<Opcion>();
+
+                for (int i = 1; i <= cont; i++) {
+
+                    for (int j = 1; j <= 4; j++) {
+                        listaOpciones = new ArrayList<Opcion>();
+
+                        sql = "SELECT Pregunta, Texto, Correcto FROM Pregunta_table JOIN Opciones_table ON Pregunta_table.Id_opcion" + j + " = Opciones_table.Id_opcion WHERE Id_opcion = Id_opcion" + j + " AND Id_pregunta = ?";
+                        stmt = conn.prepareStatement(sql);
+                        stmt.setInt(1, i);
+                        System.out.println(stmt.toString());
+                        rs = stmt.executeQuery();
+
+                        if (rs.next()) {
+                            listaOpciones.add(new Opcion(rs.getString("Texto"), rs.getBoolean("Correcto")));
+                        }
+                    }
+
+                    listaPreguntas.add(new Pregunta(rs.getString("Pregunta"), listaOpciones.get(0), listaOpciones.get(1), listaOpciones.get(2), listaOpciones.get(3)));
+                }
+
+            }
+
         } catch (SQLException ex) {
             System.out.println("Error SQL: " + ex.getMessage());
             ex.printStackTrace();
@@ -89,7 +146,7 @@ public class ConexionDB {
 
         cerrarSesion();
 
-        return listaVehiculos;
+        return listaPreguntas;
 
     }
 
@@ -184,8 +241,10 @@ public class ConexionDB {
             conn.close();
 
             System.out.println("Conexión cerrada \n");
+
         } catch (SQLException ex) {
-            Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexionDB.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
