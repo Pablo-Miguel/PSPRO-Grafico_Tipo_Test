@@ -15,10 +15,20 @@ import java.util.Collections;
  */
 public class Servicio {
     
+    private static Servicio servicio;
     private ArrayList<Pregunta> listaPreguntas;
 
-    public Servicio() {
+    private Servicio() {
         this.listaPreguntas = DAOPregunta.getInstance().getDatos();
+    }
+    
+    public static Servicio getInstance(){
+        
+        if(servicio == null){
+            servicio = new Servicio();    
+        }
+        
+        return servicio;
     }
 
     public ArrayList<Pregunta> getListaPreguntas() {

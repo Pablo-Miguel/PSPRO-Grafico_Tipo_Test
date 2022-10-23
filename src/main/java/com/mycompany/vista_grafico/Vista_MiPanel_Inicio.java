@@ -78,7 +78,7 @@ public class Vista_MiPanel_Inicio extends javax.swing.JPanel {
         // TODO add your handling code here:
         
         this.miVentana.setMenuOculto();
-        this.miVentana.cambiarPanel(new Vista_MiPanel_Preg(miVentana, new Servicio().getListaPreguntasShuffle()));
+        this.miVentana.cambiarPanel(new Vista_MiPanel_Preg(miVentana, Servicio.getInstance().getListaPreguntasShuffle()));
         
     }//GEN-LAST:event_btnJugarActionPerformed
 

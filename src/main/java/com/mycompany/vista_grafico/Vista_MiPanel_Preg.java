@@ -8,7 +8,6 @@ import com.mycompany.modelo_grafico.Opcion;
 import com.mycompany.modelo_grafico.Pregunta;
 import com.mycompany.servicio_grafico.Servicio;
 import java.util.ArrayList;
-import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 
 /**
@@ -35,7 +34,7 @@ public class Vista_MiPanel_Preg extends javax.swing.JPanel {
 
         this.miVentana = miVentana;
 
-        servicio = new Servicio();
+        servicio = Servicio.getInstance();
 
         listaAciertos = new ArrayList<Opcion>();
 

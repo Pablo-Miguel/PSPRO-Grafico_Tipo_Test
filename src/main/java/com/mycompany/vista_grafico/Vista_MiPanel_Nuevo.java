@@ -232,21 +232,52 @@ public class Vista_MiPanel_Nuevo extends javax.swing.JPanel {
                 || txtFieldOpcion4.getText().equals("Escriba respuesta...") || txtFieldOpcion4.getText().equals(""))) {
 
             if (radioOpcion1.isSelected()) {
-
-                DAOPregunta.getInstance().setDatos(new Pregunta(txtFieldPregunta.getText(), new Opcion(txtFieldOpcion1.getText(), true), new Opcion(txtFieldOpcion2.getText(), false), new Opcion(txtFieldOpcion3.getText(), false), new Opcion(txtFieldOpcion4.getText(), false)));
-                continuar = true;
+                int comp = DAOPregunta.getInstance().setDatos(new Pregunta(txtFieldPregunta.getText(), new Opcion(txtFieldOpcion1.getText(), true), new Opcion(txtFieldOpcion2.getText(), false), new Opcion(txtFieldOpcion3.getText(), false), new Opcion(txtFieldOpcion4.getText(), false)));
+                
+                if (comp == 0) {
+                    continuar = true;
+                } else if (comp == 1) {
+                    JOptionPane.showMessageDialog(this, "La pregunta ya está en la base de datos");
+                } else if (comp == -1){
+                    JOptionPane.showMessageDialog(this, "Ha ocurrido un error al insertar la pregunta");
+                }
+                
             } else if (radioOpcion2.isSelected()) {
 
-                DAOPregunta.getInstance().setDatos(new Pregunta(txtFieldPregunta.getText(), new Opcion(txtFieldOpcion1.getText(), false), new Opcion(txtFieldOpcion2.getText(), true), new Opcion(txtFieldOpcion3.getText(), false), new Opcion(txtFieldOpcion4.getText(), false)));
-                continuar = true;
+                int comp = DAOPregunta.getInstance().setDatos(new Pregunta(txtFieldPregunta.getText(), new Opcion(txtFieldOpcion1.getText(), false), new Opcion(txtFieldOpcion2.getText(), true), new Opcion(txtFieldOpcion3.getText(), false), new Opcion(txtFieldOpcion4.getText(), false)));
+                
+                if (comp == 0) {
+                    continuar = true;
+                } else if (comp == 1) {
+                    JOptionPane.showMessageDialog(this, "La pregunta ya está en la base de datos");
+                } else if (comp == -1){
+                    JOptionPane.showMessageDialog(this, "Ha ocurrido un error al insertar la pregunta");
+                }
+                
             } else if (radioOpcion3.isSelected()) {
 
-                DAOPregunta.getInstance().setDatos(new Pregunta(txtFieldPregunta.getText(), new Opcion(txtFieldOpcion1.getText(), false), new Opcion(txtFieldOpcion2.getText(), false), new Opcion(txtFieldOpcion3.getText(), true), new Opcion(txtFieldOpcion4.getText(), false)));
-                continuar = true;
+                int comp = DAOPregunta.getInstance().setDatos(new Pregunta(txtFieldPregunta.getText(), new Opcion(txtFieldOpcion1.getText(), false), new Opcion(txtFieldOpcion2.getText(), false), new Opcion(txtFieldOpcion3.getText(), true), new Opcion(txtFieldOpcion4.getText(), false)));
+                
+                if (comp == 0) {
+                    continuar = true;
+                } else if (comp == 1) {
+                    JOptionPane.showMessageDialog(this, "La pregunta ya está en la base de datos");
+                } else if (comp == -1){
+                    JOptionPane.showMessageDialog(this, "Ha ocurrido un error al insertar la pregunta");
+                }
+                
             } else if (radioOpcion4.isSelected()) {
 
-                DAOPregunta.getInstance().setDatos(new Pregunta(txtFieldPregunta.getText(), new Opcion(txtFieldOpcion1.getText(), false), new Opcion(txtFieldOpcion2.getText(), false), new Opcion(txtFieldOpcion3.getText(), false), new Opcion(txtFieldOpcion4.getText(), true)));
-                continuar = true;
+                int comp = DAOPregunta.getInstance().setDatos(new Pregunta(txtFieldPregunta.getText(), new Opcion(txtFieldOpcion1.getText(), false), new Opcion(txtFieldOpcion2.getText(), false), new Opcion(txtFieldOpcion3.getText(), false), new Opcion(txtFieldOpcion4.getText(), true)));
+                
+                if (comp == 0) {
+                    continuar = true;
+                } else if (comp == 1) {
+                    JOptionPane.showMessageDialog(this, "La pregunta ya está en la base de datos");
+                } else if (comp == -1){
+                    JOptionPane.showMessageDialog(this, "Ha ocurrido un error al insertar la pregunta");
+                }
+                
             }
 
             if (continuar) {
