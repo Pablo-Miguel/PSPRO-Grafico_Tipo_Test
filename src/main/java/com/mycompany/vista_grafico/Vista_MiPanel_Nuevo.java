@@ -326,7 +326,7 @@ public class Vista_MiPanel_Nuevo extends javax.swing.JPanel {
         this.modelo = new DefaultListModel();
 
         for (int i = 0; i < listaPreguntas.size(); i++) {
-            this.modelo.addElement(listaPreguntas.get(i).getTituloPreg());
+            this.modelo.addElement(listaPreguntas.get(i).getId_pregunta() + "-" + listaPreguntas.get(i).getTituloPreg());
         }
 
         this.listaJPreguntas.setModel(this.modelo);

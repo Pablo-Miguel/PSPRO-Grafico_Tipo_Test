@@ -10,12 +10,27 @@ package com.mycompany.modelo_grafico;
  */
 public class Opcion {
     
+    private Integer id_opcion;
     private String txtOpcion;
     private boolean correcto;
 
+    public Opcion(Integer id_opcion, String txtOpcion, boolean correcto) {
+        this.id_opcion = id_opcion;
+        this.txtOpcion = txtOpcion;
+        this.correcto = correcto;
+    }
+    
     public Opcion(String txtOpcion, boolean correcto) {
         this.txtOpcion = txtOpcion;
         this.correcto = correcto;
+    }
+
+    public Integer getId_opcion() {
+        return id_opcion;
+    }
+
+    public void setId_opcion(Integer id_opcion) {
+        this.id_opcion = id_opcion;
     }
 
     public String getTxtOpcion() {

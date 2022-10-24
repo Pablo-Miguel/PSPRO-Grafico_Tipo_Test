@@ -75,6 +75,7 @@ public class DAOPregunta {
             if (listaPreguntas.contains(pregunta)) {
 
                 listaPreguntas.remove(pregunta);
+                
             }
         }
     }
