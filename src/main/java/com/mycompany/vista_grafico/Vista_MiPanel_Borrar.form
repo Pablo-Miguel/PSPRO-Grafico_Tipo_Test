@@ -30,7 +30,7 @@
                       <Component id="btnVolver" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="jScrollPane1" pref="369" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="367" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
@@ -40,12 +40,21 @@
                                   <Component id="radioOpcion3" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="radioOpcion4" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtFieldOpcion4" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtFieldOpcion3" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtFieldOpcion2" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtFieldOpcion1" alignment="1" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lblId1" alignment="1" min="-2" pref="43" max="-2" attributes="0"/>
+                                      <Component id="lblId2" alignment="1" min="-2" pref="43" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="lblId3" min="-2" pref="43" max="-2" attributes="0"/>
+                                  <Component id="lblId4" min="-2" pref="43" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txtFieldOpcion2" alignment="1" pref="290" max="32767" attributes="0"/>
+                                  <Component id="txtFieldOpcion3" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="txtFieldOpcion4" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="txtFieldOpcion1" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="txtFieldPregunta" alignment="1" min="-2" pref="368" max="-2" attributes="0"/>
@@ -65,23 +74,37 @@
                       <Component id="txtFieldPregunta" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtFieldOpcion1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="radioOpcion1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtFieldOpcion2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="radioOpcion2" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="radioOpcion3" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtFieldOpcion3" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="radioOpcion4" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtFieldOpcion4" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtFieldOpcion1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="radioOpcion1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                      <Component id="txtFieldOpcion2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblId2" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="radioOpcion2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="radioOpcion3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                      <Component id="txtFieldOpcion3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblId3" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="radioOpcion4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                      <Component id="txtFieldOpcion4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblId4" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Component id="lblId1" min="-2" pref="20" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="149" max="32767" attributes="0"/>
                   </Group>
@@ -196,6 +219,32 @@
           <ComponentRef name="grupoRadio"/>
         </Property>
         <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblId1">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="ID"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblId2">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="ID"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblId3">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="ID"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblId4">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="ID"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
     </Component>
   </SubComponents>

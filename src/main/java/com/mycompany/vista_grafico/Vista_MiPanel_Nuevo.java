@@ -19,7 +19,7 @@ public class Vista_MiPanel_Nuevo extends javax.swing.JPanel {
 
     private Vista_MiVentana miVentana;
     private Vista_MiPanel_Inicio miPanelInicio;
-    private Boolean continuar;
+    private Boolean continuar, error;
     private ArrayList<Pregunta> listaPreguntas;
 
     private DefaultListModel modelo;
@@ -31,6 +31,7 @@ public class Vista_MiPanel_Nuevo extends javax.swing.JPanel {
         initComponents();
 
         continuar = false;
+        error = false;
 
         this.miVentana = miVentana;
         this.miPanelInicio = new Vista_MiPanel_Inicio(this.miVentana);
@@ -238,8 +239,10 @@ public class Vista_MiPanel_Nuevo extends javax.swing.JPanel {
                     continuar = true;
                 } else if (comp == 1) {
                     JOptionPane.showMessageDialog(this, "La pregunta ya está en la base de datos");
+                    error = true;
                 } else if (comp == -1){
                     JOptionPane.showMessageDialog(this, "Ha ocurrido un error al insertar la pregunta");
+                    error = true;
                 }
                 
             } else if (radioOpcion2.isSelected()) {
@@ -250,8 +253,10 @@ public class Vista_MiPanel_Nuevo extends javax.swing.JPanel {
                     continuar = true;
                 } else if (comp == 1) {
                     JOptionPane.showMessageDialog(this, "La pregunta ya está en la base de datos");
+                    error = true;
                 } else if (comp == -1){
                     JOptionPane.showMessageDialog(this, "Ha ocurrido un error al insertar la pregunta");
+                    error = true;
                 }
                 
             } else if (radioOpcion3.isSelected()) {
@@ -262,8 +267,10 @@ public class Vista_MiPanel_Nuevo extends javax.swing.JPanel {
                     continuar = true;
                 } else if (comp == 1) {
                     JOptionPane.showMessageDialog(this, "La pregunta ya está en la base de datos");
+                    error = true;
                 } else if (comp == -1){
                     JOptionPane.showMessageDialog(this, "Ha ocurrido un error al insertar la pregunta");
+                    error = true;
                 }
                 
             } else if (radioOpcion4.isSelected()) {
@@ -274,8 +281,10 @@ public class Vista_MiPanel_Nuevo extends javax.swing.JPanel {
                     continuar = true;
                 } else if (comp == 1) {
                     JOptionPane.showMessageDialog(this, "La pregunta ya está en la base de datos");
+                    error = true;
                 } else if (comp == -1){
                     JOptionPane.showMessageDialog(this, "Ha ocurrido un error al insertar la pregunta");
+                    error = true;
                 }
                 
             }
@@ -291,9 +300,19 @@ public class Vista_MiPanel_Nuevo extends javax.swing.JPanel {
                 txtFieldOpcion3.setText("Escriba respuesta...");
                 txtFieldOpcion4.setText("Escriba respuesta...");   
             }
-            else{
+            else if(!error){
                 JOptionPane.showMessageDialog(this, "Porfavor, seleccione la opcion correcta para guardar");
             }
+            else{
+                txtFieldPregunta.setText("Escriba una pregunta...");
+                txtFieldOpcion1.setText("Escriba respuesta...");
+                txtFieldOpcion2.setText("Escriba respuesta...");
+                txtFieldOpcion3.setText("Escriba respuesta...");
+                txtFieldOpcion4.setText("Escriba respuesta...");
+            }
+            
+            continuar = false;
+            error = false;
 
         } else {
 

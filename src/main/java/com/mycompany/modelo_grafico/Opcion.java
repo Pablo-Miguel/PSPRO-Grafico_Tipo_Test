@@ -24,6 +24,10 @@ public class Opcion {
         this.txtOpcion = txtOpcion;
         this.correcto = correcto;
     }
+    
+    public Opcion(Integer id_opcion) {
+        this.id_opcion = id_opcion;
+    }
 
     public Integer getId_opcion() {
         return id_opcion;

@@ -47,37 +47,29 @@ public class DAOPregunta {
 
     //Create
     public int setDatos(Pregunta pregunta) {
-        if (listaPreguntas != null) {
-
-            if (ConexionDB.getPregunta(pregunta) == null) {
-                
-                try {
-                    ConexionDB.insertarPregunta(pregunta);
-                    return 0;
-                } catch (SQLIntegrityConstraintViolationException ex) {
-                    return 1;
-                } catch (SQLException ex) {
-                    return -1;
-                }
-                
-            }
+        try {
+            ConexionDB.insertarPregunta(pregunta);
+            return 0;
+        } catch (SQLIntegrityConstraintViolationException ex) {
+            return 1;
+        } catch (SQLException ex) {
+            return -1;
         }
-        
-        return -1;
     }
 
     //Update
-    //Crear metodo
+
+    public int updateDatos(Pregunta pregunta) {
+        
+        return ConexionDB.updatePregunta(pregunta);
+        
+    }
+    
     //Delete
-    public void deleteDatos(Pregunta pregunta) {
-        if (listaPreguntas != null) {
-
-            if (listaPreguntas.contains(pregunta)) {
-
-                listaPreguntas.remove(pregunta);
-                
-            }
-        }
+    public int deleteDatos(Pregunta pregunta) {
+        return ConexionDB.deletePregunta(pregunta);
     }
 
 }
+
+

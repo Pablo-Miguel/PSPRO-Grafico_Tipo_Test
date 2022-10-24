@@ -77,8 +77,10 @@ public class Vista_MiPanel_Inicio extends javax.swing.JPanel {
     private void btnJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJugarActionPerformed
         // TODO add your handling code here:
         
-        this.miVentana.setMenuOculto();
-        this.miVentana.cambiarPanel(new Vista_MiPanel_Preg(miVentana, Servicio.getInstance().getListaPreguntasShuffle()));
+        if(!Servicio.getInstance().getListaPreguntas().isEmpty()){
+            this.miVentana.setMenuOculto();
+            this.miVentana.cambiarPanel(new Vista_MiPanel_Preg(miVentana, Servicio.getInstance().getListaPreguntasShuffle()));
+        }
         
     }//GEN-LAST:event_btnJugarActionPerformed
 

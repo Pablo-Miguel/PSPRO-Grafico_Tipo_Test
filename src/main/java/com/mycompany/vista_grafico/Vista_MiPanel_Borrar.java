@@ -16,25 +16,25 @@ import javax.swing.JOptionPane;
  * @author Dam
  */
 public class Vista_MiPanel_Borrar extends javax.swing.JPanel {
-    
+
     private Vista_MiVentana miVentana;
     private Vista_MiPanel_Inicio miPanelInicio;
-    
+
     private ArrayList<Pregunta> listaPreguntas;
-    
+
     private DefaultListModel modelo;
-    
+
     /**
      * Creates new form Vista_MiPanel_Borrar
      */
     public Vista_MiPanel_Borrar(Vista_MiVentana miVentana) {
         initComponents();
-        
+
         this.miVentana = miVentana;
         this.miPanelInicio = new Vista_MiPanel_Inicio(this.miVentana);
-        
+
         this.actualizarLista();
-        
+
     }
 
     /**
@@ -60,6 +60,10 @@ public class Vista_MiPanel_Borrar extends javax.swing.JPanel {
         txtFieldPregunta = new javax.swing.JTextField();
         radioOpcion3 = new javax.swing.JRadioButton();
         radioOpcion1 = new javax.swing.JRadioButton();
+        lblId1 = new javax.swing.JLabel();
+        lblId2 = new javax.swing.JLabel();
+        lblId3 = new javax.swing.JLabel();
+        lblId4 = new javax.swing.JLabel();
 
         grupoRadio.add(radioOpcion4);
         radioOpcion4.setEnabled(false);
@@ -109,6 +113,20 @@ public class Vista_MiPanel_Borrar extends javax.swing.JPanel {
         grupoRadio.add(radioOpcion1);
         radioOpcion1.setEnabled(false);
 
+        lblId1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblId1.setText("ID");
+
+        lblId2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblId2.setText("ID");
+
+        lblId3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblId3.setText("ID");
+        lblId3.setToolTipText("");
+
+        lblId4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblId4.setText("ID");
+        lblId4.setToolTipText("");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -122,7 +140,7 @@ public class Vista_MiPanel_Borrar extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnVolver))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
@@ -131,12 +149,19 @@ public class Vista_MiPanel_Borrar extends javax.swing.JPanel {
                                     .addComponent(radioOpcion1, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(radioOpcion3, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(radioOpcion4, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(12, 12, 12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtFieldOpcion4)
-                                    .addComponent(txtFieldOpcion3)
-                                    .addComponent(txtFieldOpcion2)
-                                    .addComponent(txtFieldOpcion1, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblId1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lblId2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lblId3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblId4, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtFieldOpcion2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                                    .addComponent(txtFieldOpcion3, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtFieldOpcion4, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtFieldOpcion1)))
                             .addComponent(txtFieldPregunta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(23, 23, 23))
         );
@@ -149,20 +174,29 @@ public class Vista_MiPanel_Borrar extends javax.swing.JPanel {
                         .addComponent(txtFieldPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtFieldOpcion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(radioOpcion1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtFieldOpcion2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(radioOpcion2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(radioOpcion3)
-                            .addComponent(txtFieldOpcion3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(radioOpcion4)
-                            .addComponent(txtFieldOpcion4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtFieldOpcion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(radioOpcion1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(txtFieldOpcion2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lblId2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(radioOpcion2))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(radioOpcion3)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(txtFieldOpcion3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lblId3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(radioOpcion4)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(txtFieldOpcion4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lblId4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(lblId1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 149, Short.MAX_VALUE))
                     .addComponent(jScrollPane1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -187,64 +221,75 @@ public class Vista_MiPanel_Borrar extends javax.swing.JPanel {
 
     private void listaJPreguntasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaJPreguntasMouseClicked
         // TODO add your handling code here:
-        
-        this.txtFieldPregunta.setText(DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getTituloPreg());
-        if(DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion1().isCorrecto()){
-            radioOpcion1.setSelected(true);
+
+        if (listaJPreguntas.getModel().getSize() != 0) {
+            this.txtFieldPregunta.setText(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getTituloPreg());
+            this.lblId1.setText(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion1().getId_opcion() + "");
+            this.lblId2.setText(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion2().getId_opcion() + "");
+            this.lblId3.setText(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion3().getId_opcion() + "");
+            this.lblId4.setText(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion4().getId_opcion() + "");
+            if (listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion1().isCorrecto()) {
+                radioOpcion1.setSelected(true);
+            } else if (listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion2().isCorrecto()) {
+                radioOpcion2.setSelected(true);
+            } else if (listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion3().isCorrecto()) {
+                radioOpcion3.setSelected(true);
+            } else if (listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion4().isCorrecto()) {
+                radioOpcion4.setSelected(true);
+            }
+
+            txtFieldOpcion1.setText(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion1().getTxtOpcion());
+            txtFieldOpcion2.setText(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion2().getTxtOpcion());
+            txtFieldOpcion3.setText(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion3().getTxtOpcion());
+            txtFieldOpcion4.setText(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion4().getTxtOpcion());
         }
-        else if(DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion2().isCorrecto()){
-            radioOpcion2.setSelected(true);
-        }
-        else if(DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion3().isCorrecto()){
-            radioOpcion3.setSelected(true);
-        }
-        else if(DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion4().isCorrecto()){
-            radioOpcion4.setSelected(true);
-        }
-        
-        txtFieldOpcion1.setText(DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion1().getTxtOpcion());
-        txtFieldOpcion2.setText(DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion2().getTxtOpcion());
-        txtFieldOpcion3.setText(DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion3().getTxtOpcion());
-        txtFieldOpcion4.setText(DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion4().getTxtOpcion());
 
     }//GEN-LAST:event_listaJPreguntasMouseClicked
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
         // TODO add your handling code here:
-        if(!(txtFieldPregunta.getText().equals("Escriba una pregunta...") || txtFieldPregunta.getText().equals("")
-        || txtFieldOpcion1.getText().equals("Escriba respuesta...") || txtFieldOpcion1.getText().equals("")
-        || txtFieldOpcion2.getText().equals("Escriba respuesta...") || txtFieldOpcion2.getText().equals("")
-        || txtFieldOpcion3.getText().equals("Escriba respuesta...") || txtFieldOpcion3.getText().equals("")
-        || txtFieldOpcion4.getText().equals("Escriba respuesta...") || txtFieldOpcion4.getText().equals(""))
-        ){
-            DAOPregunta.getInstance().deleteDatos(new Pregunta(listaJPreguntas.getSelectedValue()));
+        if (!(txtFieldPregunta.getText().equals("Escriba una pregunta...") || txtFieldPregunta.getText().equals("")
+                || txtFieldOpcion1.getText().equals("Escriba respuesta...") || txtFieldOpcion1.getText().equals("")
+                || txtFieldOpcion2.getText().equals("Escriba respuesta...") || txtFieldOpcion2.getText().equals("")
+                || txtFieldOpcion3.getText().equals("Escriba respuesta...") || txtFieldOpcion3.getText().equals("")
+                || txtFieldOpcion4.getText().equals("Escriba respuesta...") || txtFieldOpcion4.getText().equals(""))) {
+            int comp = DAOPregunta.getInstance().deleteDatos(new Pregunta(Integer.parseInt(listaJPreguntas.getSelectedValue().charAt(0) + ""), new Opcion(Integer.parseInt(lblId1.getText())), new Opcion(Integer.parseInt(lblId2.getText())), new Opcion(Integer.parseInt(lblId3.getText())), new Opcion(Integer.parseInt(lblId4.getText()))));
 
-            this.actualizarLista();
+            if (comp == 0) {
+                this.actualizarLista();
 
-            Integer opcion = JOptionPane.showConfirmDialog(this, "Se ha borrado la pregunta correctamente", "Borrado correcto", JOptionPane.DEFAULT_OPTION);
-            
-            txtFieldPregunta.setText("Escriba una pregunta...");
-            txtFieldOpcion1.setText("Escriba respuesta...");
-            txtFieldOpcion2.setText("Escriba respuesta...");
-            txtFieldOpcion3.setText("Escriba respuesta...");
-            txtFieldOpcion4.setText("Escriba respuesta...");
-        }
-        else{
-            Integer opcion = JOptionPane.showConfirmDialog(this, "No se ha borrado la bbdd", "Borrado erroneo", JOptionPane.DEFAULT_OPTION); 
+                JOptionPane.showConfirmDialog(this, "Se ha borrado la pregunta correctamente", "Borrado correcto", JOptionPane.DEFAULT_OPTION);
+
+                txtFieldPregunta.setText("Escriba una pregunta...");
+                txtFieldOpcion1.setText("Escriba respuesta...");
+                txtFieldOpcion2.setText("Escriba respuesta...");
+                txtFieldOpcion3.setText("Escriba respuesta...");
+                txtFieldOpcion4.setText("Escriba respuesta...");
+                this.lblId1.setText("ID");
+                this.lblId2.setText("ID");
+                this.lblId3.setText("ID");
+                this.lblId4.setText("ID");
+                
+            } else {
+                JOptionPane.showConfirmDialog(this, "Se ha producido un error al borrar la bbdd", "Borrado correcto", JOptionPane.DEFAULT_OPTION);
+            }
+
+        } else {
+            JOptionPane.showConfirmDialog(this, "No se ha borrado la bbdd", "Borrado erroneo", JOptionPane.DEFAULT_OPTION);
         }
     }//GEN-LAST:event_btnBorrarActionPerformed
 
     private void actualizarLista() {
         listaPreguntas = DAOPregunta.getInstance().getDatos();
-        
+
         this.modelo = new DefaultListModel();
-        
-        for(int i = 0; i < listaPreguntas.size(); i++){
-            this.modelo.addElement(listaPreguntas.get(i).getTituloPreg());
+
+        for (int i = 0; i < listaPreguntas.size(); i++) {
+            this.modelo.addElement(listaPreguntas.get(i).getId_pregunta() + "-" + listaPreguntas.get(i).getTituloPreg());
         }
-        
+
         this.listaJPreguntas.setModel(this.modelo);
-        
+
         this.updateUI();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -252,6 +297,10 @@ public class Vista_MiPanel_Borrar extends javax.swing.JPanel {
     private javax.swing.JButton btnVolver;
     private javax.swing.ButtonGroup grupoRadio;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblId1;
+    private javax.swing.JLabel lblId2;
+    private javax.swing.JLabel lblId3;
+    private javax.swing.JLabel lblId4;
     private javax.swing.JList<String> listaJPreguntas;
     private javax.swing.JRadioButton radioOpcion1;
     private javax.swing.JRadioButton radioOpcion2;

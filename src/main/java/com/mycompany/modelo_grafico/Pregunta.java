@@ -34,6 +34,14 @@ public class Pregunta {
         this.opcion4 = opcion4;
         
     }
+    
+    public Pregunta(Integer id_pregunta, Opcion opcion1, Opcion opcion2, Opcion opcion3, Opcion opcion4) {
+        this.id_pregunta = id_pregunta;
+        this.opcion1 = opcion1;
+        this.opcion2 = opcion2;
+        this.opcion3 = opcion3;
+        this.opcion4 = opcion4;
+    }
 
     public Integer getId_pregunta() {
         return id_pregunta;
@@ -41,10 +49,6 @@ public class Pregunta {
 
     public void setId_pregunta(Integer id_pregunta) {
         this.id_pregunta = id_pregunta;
-    }
-    
-    public Pregunta(String tituloPreg) {
-        this.tituloPreg = tituloPreg;
     }
 
     public String getTituloPreg() {

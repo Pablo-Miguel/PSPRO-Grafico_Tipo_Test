@@ -51,13 +51,30 @@ public class ConexionDB {
             st = conn.createStatement();
 
             ArrayList<Integer> listaIds = new ArrayList<Integer>();
-            String sql = "";
+            String sql = "SELECT MAX(Id_pregunta) + 1 AS ID_MAX FROM Pregunta_table;";
+            stmt = conn.prepareStatement(sql);
+            System.out.println(stmt.toString());
+            rs = stmt.executeQuery();
+            
+            Integer id_pregunta = null;
+            if (rs.next()) {
+                id_pregunta = rs.getInt("ID_MAX");
+            }
+            
+            pregunta.setId_pregunta(id_pregunta);
 
             ArrayList<Opcion> listaOpciones = new ArrayList<Opcion>();
             listaOpciones.add(pregunta.getOpcion1());
             listaOpciones.add(pregunta.getOpcion2());
             listaOpciones.add(pregunta.getOpcion3());
             listaOpciones.add(pregunta.getOpcion4());
+            
+            sql = "INSERT INTO Pregunta_table (Id_pregunta, Pregunta) VALUES (?, ?);";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, pregunta.getId_pregunta());
+            stmt.setString(2, pregunta.getTituloPreg());
+            System.out.println(stmt.toString());
+            stmt.execute();
 
             for (int i = 0; i < listaOpciones.size(); i++) {
 
@@ -80,16 +97,11 @@ public class ConexionDB {
 
             }
 
-            sql = "INSERT INTO Pregunta_table (Pregunta) VALUES (?);";
-            stmt = conn.prepareStatement(sql);
-            stmt.setString(1, pregunta.getTituloPreg());
-            System.out.println(stmt.toString());
-            stmt.execute();
-
             for (int i = 0; i < listaIds.size(); i++) {
-                sql = "INSERT INTO preguntaopciones_table (Pregunta, Id_opcion) VALUES (?, ?);";
+
+                sql = "INSERT INTO Preguntaopciones_table (Id_pregunta, Id_opcion) VALUES (?, ?);";
                 stmt = conn.prepareStatement(sql);
-                stmt.setString(1, pregunta.getTituloPreg());
+                stmt.setInt(1, pregunta.getId_pregunta());
                 stmt.setInt(2, listaIds.get(i));
                 System.out.println(stmt.toString());
                 stmt.execute();
@@ -102,8 +114,9 @@ public class ConexionDB {
             System.out.println("Error SQL: " + ex.toString());
             throw new SQLException();
         }
-
-        cerrarSesion();
+        finally{
+            cerrarSesion();
+        }
 
     }
 
@@ -151,14 +164,14 @@ public class ConexionDB {
                 while (rs.next()) {
                     listaOpciones.add(new Opcion(rs.getInt("Id_opcion"), rs.getString("Texto"), rs.getBoolean("Correcto")));
                 }
-                
+
                 sql = "SELECT Pregunta FROM Pregunta_table WHERE Id_pregunta=?;";
                 stmt = conn.prepareStatement(sql);
                 stmt.setInt(1, listaPreguntasIds.get(i));
                 System.out.println(stmt.toString());
                 rs = stmt.executeQuery();
-                
-                if(rs.next()){
+
+                if (rs.next()) {
                     listaPreguntas.add(new Pregunta(listaPreguntasIds.get(i), rs.getString("Pregunta"), listaOpciones.get(0), listaOpciones.get(1), listaOpciones.get(2), listaOpciones.get(3)));
                 }
 
@@ -201,7 +214,7 @@ public class ConexionDB {
             rs = stmt.executeQuery();
 
             while (rs.next()) {
-                listaOpciones.add(new Opcion(rs.getInt("Id_opcion"),rs.getString("Texto"), rs.getBoolean("Correcto")));
+                listaOpciones.add(new Opcion(rs.getInt("Id_opcion"), rs.getString("Texto"), rs.getBoolean("Correcto")));
             }
 
             if (!listaOpciones.isEmpty()) {
@@ -220,44 +233,82 @@ public class ConexionDB {
         return preguntaDB;
     }
 
-    /*
-    public static Pregunta updatePregunta(String matriculaAntigua, String matriculaNueva, String marca, String modelo) {
+    public static int updatePregunta(Pregunta pregunta) {
         enlace();
 
         try {
             st = conn.createStatement();
 
-            String sql = "UPDATE vehiculo SET Marca = ?, Modelo = ?, Matricula = ? WHERE Matricula = ?;";
+            String sql = "UPDATE Pregunta_table SET Pregunta=? WHERE Id_pregunta=?;";
             stmt = conn.prepareStatement(sql);
-            stmt.setString(1, marca);
-            stmt.setString(2, modelo);
-            stmt.setString(3, matriculaNueva);
-            stmt.setString(4, matriculaAntigua);
+            stmt.setString(1, pregunta.getTituloPreg());
+            stmt.setInt(2, pregunta.getId_pregunta());
             System.out.println(stmt.toString());
             stmt.executeUpdate();
+            
+            ArrayList<Opcion> listaOpciones = new ArrayList<Opcion>();
+            listaOpciones.add(pregunta.getOpcion1());
+            listaOpciones.add(pregunta.getOpcion2());
+            listaOpciones.add(pregunta.getOpcion3());
+            listaOpciones.add(pregunta.getOpcion4());
+            
+            for(int i = 0; i < listaOpciones.size(); i++){
+                sql = "UPDATE Opciones_table SET Texto=?, Correcto=? WHERE Id_opcion=?;";
+                stmt = conn.prepareStatement(sql);
+                stmt.setString(1, listaOpciones.get(i).getTxtOpcion());
+                stmt.setBoolean(2, listaOpciones.get(i).isCorrecto());
+                stmt.setInt(3, listaOpciones.get(i).getId_opcion());
+                System.out.println(stmt.toString());
+                stmt.executeUpdate();
+            }
 
-            return new Vehiculo(marca, modelo, matriculaNueva);
-
+        } catch (SQLIntegrityConstraintViolationException ex){
+            System.out.println("Error SQL: " + ex.getMessage());
+            return 1;
         } catch (SQLException ex) {
             System.out.println("Error SQL: " + ex.getMessage());
             ex.printStackTrace();
+            return -1;
+        } finally {
+            cerrarSesion();
         }
-
-        cerrarSesion();
-
-        return null;
+        
+        return 0;
     }
-     */
-    public static Integer deletePregunta(String matricula) {
+    
+    public static Integer deletePregunta(Pregunta pregunta) {
 
         enlace();
 
         try {
             st = conn.createStatement();
-
-            String sql = "DELETE FROM Opciones_table WHERE Id_opcion = ?;";
+            
+            String sql = "";
+            ArrayList<Opcion> listaOpciones = new ArrayList<Opcion>();
+            listaOpciones.add(pregunta.getOpcion1());
+            listaOpciones.add(pregunta.getOpcion2());
+            listaOpciones.add(pregunta.getOpcion3());
+            listaOpciones.add(pregunta.getOpcion4());
+            
+            sql = "DELETE FROM Preguntaopciones_table WHERE Id_pregunta=?;";
             stmt = conn.prepareStatement(sql);
-            stmt.setString(1, matricula);
+            stmt.setInt(1, pregunta.getId_pregunta());
+            System.out.println(stmt.toString());
+            stmt.execute();
+            
+            for (int i = 0; i < listaOpciones.size(); i++) {
+
+                sql = "DELETE FROM Opciones_table WHERE Id_opcion=?;";
+                stmt = conn.prepareStatement(sql);
+                stmt.setInt(1, listaOpciones.get(i).getId_opcion());
+                System.out.println(stmt.toString());
+                stmt.execute();
+
+            }
+
+            sql = "DELETE FROM Pregunta_table WHERE Id_pregunta=?;";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, pregunta.getId_pregunta());
             System.out.println(stmt.toString());
             stmt.execute();
 
@@ -275,19 +326,21 @@ public class ConexionDB {
 
     private static void cerrarSesion() {
         try {
-            rs.close();
-
-            st.close();
-
-            stmt.close();
-
-            conn.close();
-
+            if(rs != null){
+                rs.close();
+            }
+            if(st != null){
+                st.close();
+            }
+            if(stmt != null){
+                stmt.close();
+            }
+            if(conn != null){
+                conn.close();
+            }
             System.out.println("Conexión cerrada \n");
-
         } catch (SQLException ex) {
-            Logger.getLogger(ConexionDB.class
-                    .getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

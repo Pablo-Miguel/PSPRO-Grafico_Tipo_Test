@@ -16,25 +16,27 @@ import javax.swing.JOptionPane;
  * @author Dam
  */
 public class Vista_MiPanel_Actualizar extends javax.swing.JPanel {
-    
+
     private Vista_MiVentana miVentana;
     private Vista_MiPanel_Inicio miPanelInicio;
-    
+
     private ArrayList<Pregunta> listaPreguntas;
-    
+
     private DefaultListModel modelo;
-    
+
+    private Pregunta pregunta;
+
     /**
      * Creates new form Vista_MiPanel_Actualizar
      */
     public Vista_MiPanel_Actualizar(Vista_MiVentana miVentana) {
         initComponents();
-        
+
         this.miVentana = miVentana;
         this.miPanelInicio = new Vista_MiPanel_Inicio(this.miVentana);
-        
+
         this.actualizarLista();
-        
+
     }
 
     /**
@@ -47,62 +49,28 @@ public class Vista_MiPanel_Actualizar extends javax.swing.JPanel {
     private void initComponents() {
 
         grupoRadio = new javax.swing.ButtonGroup();
-        radioOpcion3 = new javax.swing.JRadioButton();
-        radioOpcion4 = new javax.swing.JRadioButton();
-        txtFieldOpcion1 = new javax.swing.JTextField();
-        txtFieldOpcion2 = new javax.swing.JTextField();
-        txtFieldOpcion3 = new javax.swing.JTextField();
         btnVolver = new javax.swing.JButton();
-        txtFieldOpcion4 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         listaJPreguntas = new javax.swing.JList<>();
         btnActualizar = new javax.swing.JButton();
         txtFieldPregunta = new javax.swing.JTextField();
-        radioOpcion1 = new javax.swing.JRadioButton();
+        radioOpcion4 = new javax.swing.JRadioButton();
+        radioOpcion3 = new javax.swing.JRadioButton();
         radioOpcion2 = new javax.swing.JRadioButton();
-
-        grupoRadio.add(radioOpcion3);
-        radioOpcion3.setEnabled(false);
-
-        grupoRadio.add(radioOpcion4);
-        radioOpcion4.setEnabled(false);
-
-        txtFieldOpcion1.setText("Escriba respuesta...");
-        txtFieldOpcion1.setEnabled(false);
-        txtFieldOpcion1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtFieldOpcion1MouseClicked(evt);
-            }
-        });
-
-        txtFieldOpcion2.setText("Escriba respuesta...");
-        txtFieldOpcion2.setEnabled(false);
-        txtFieldOpcion2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtFieldOpcion2MouseClicked(evt);
-            }
-        });
-
-        txtFieldOpcion3.setText("Escriba respuesta...");
-        txtFieldOpcion3.setEnabled(false);
-        txtFieldOpcion3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtFieldOpcion3MouseClicked(evt);
-            }
-        });
+        radioOpcion1 = new javax.swing.JRadioButton();
+        lblId1 = new javax.swing.JLabel();
+        lblId2 = new javax.swing.JLabel();
+        lblId3 = new javax.swing.JLabel();
+        lblId4 = new javax.swing.JLabel();
+        txtFieldOpcion4 = new javax.swing.JTextField();
+        txtFieldOpcion3 = new javax.swing.JTextField();
+        txtFieldOpcion2 = new javax.swing.JTextField();
+        txtFieldOpcion1 = new javax.swing.JTextField();
 
         btnVolver.setText("Volver");
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVolverActionPerformed(evt);
-            }
-        });
-
-        txtFieldOpcion4.setText("Escriba respuesta...");
-        txtFieldOpcion4.setEnabled(false);
-        txtFieldOpcion4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtFieldOpcion4MouseClicked(evt);
             }
         });
 
@@ -128,11 +96,63 @@ public class Vista_MiPanel_Actualizar extends javax.swing.JPanel {
             }
         });
 
-        grupoRadio.add(radioOpcion1);
-        radioOpcion1.setEnabled(false);
+        grupoRadio.add(radioOpcion4);
+        radioOpcion4.setEnabled(false);
+
+        grupoRadio.add(radioOpcion3);
+        radioOpcion3.setEnabled(false);
 
         grupoRadio.add(radioOpcion2);
         radioOpcion2.setEnabled(false);
+
+        grupoRadio.add(radioOpcion1);
+        radioOpcion1.setEnabled(false);
+
+        lblId1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblId1.setText("ID");
+
+        lblId2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblId2.setText("ID");
+
+        lblId3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblId3.setText("ID");
+        lblId3.setToolTipText("");
+
+        lblId4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblId4.setText("ID");
+        lblId4.setToolTipText("");
+
+        txtFieldOpcion4.setText("Escriba respuesta...");
+        txtFieldOpcion4.setEnabled(false);
+        txtFieldOpcion4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtFieldOpcion4MouseClicked(evt);
+            }
+        });
+
+        txtFieldOpcion3.setText("Escriba respuesta...");
+        txtFieldOpcion3.setEnabled(false);
+        txtFieldOpcion3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtFieldOpcion3MouseClicked(evt);
+            }
+        });
+
+        txtFieldOpcion2.setText("Escriba respuesta...");
+        txtFieldOpcion2.setEnabled(false);
+        txtFieldOpcion2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtFieldOpcion2MouseClicked(evt);
+            }
+        });
+
+        txtFieldOpcion1.setText("Escriba respuesta...");
+        txtFieldOpcion1.setEnabled(false);
+        txtFieldOpcion1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtFieldOpcion1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -145,25 +165,35 @@ public class Vista_MiPanel_Actualizar extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnActualizar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnVolver))
+                        .addComponent(btnVolver)
+                        .addGap(2, 2, 2))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(txtFieldPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(radioOpcion2, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(radioOpcion1, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(radioOpcion3, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(radioOpcion4, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(12, 12, 12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtFieldOpcion4)
-                                    .addComponent(txtFieldOpcion3)
-                                    .addComponent(txtFieldOpcion2)
-                                    .addComponent(txtFieldOpcion1, javax.swing.GroupLayout.Alignment.TRAILING)))
-                            .addComponent(txtFieldPregunta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(23, 23, 23))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblId1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lblId2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lblId3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblId4, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtFieldOpcion2, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtFieldOpcion3, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtFieldOpcion4, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtFieldOpcion1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,24 +202,33 @@ public class Vista_MiPanel_Actualizar extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtFieldPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtFieldOpcion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(radioOpcion1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtFieldOpcion2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(radioOpcion2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(radioOpcion3)
-                            .addComponent(txtFieldOpcion3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(radioOpcion4)
-                            .addComponent(txtFieldOpcion4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 149, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtFieldOpcion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(radioOpcion1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(txtFieldOpcion2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lblId2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(radioOpcion2))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(radioOpcion3)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(txtFieldOpcion3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lblId3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(radioOpcion4)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(txtFieldOpcion4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lblId4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(lblId1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVolver)
@@ -197,21 +236,6 @@ public class Vista_MiPanel_Actualizar extends javax.swing.JPanel {
                 .addGap(81, 81, 81))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtFieldOpcion1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtFieldOpcion1MouseClicked
-        // TODO add your handling code here:
-        txtFieldOpcion1.setText("");
-    }//GEN-LAST:event_txtFieldOpcion1MouseClicked
-
-    private void txtFieldOpcion2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtFieldOpcion2MouseClicked
-        // TODO add your handling code here:
-        txtFieldOpcion2.setText("");
-    }//GEN-LAST:event_txtFieldOpcion2MouseClicked
-
-    private void txtFieldOpcion3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtFieldOpcion3MouseClicked
-        // TODO add your handling code here:
-        txtFieldOpcion3.setText("");
-    }//GEN-LAST:event_txtFieldOpcion3MouseClicked
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         // TODO add your handling code here:
@@ -225,81 +249,114 @@ public class Vista_MiPanel_Actualizar extends javax.swing.JPanel {
         this.miVentana.cambiarPanel(this.miPanelInicio);
     }//GEN-LAST:event_btnVolverActionPerformed
 
-    private void txtFieldOpcion4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtFieldOpcion4MouseClicked
-        // TODO add your handling code here:
-        txtFieldOpcion4.setText("");
-    }//GEN-LAST:event_txtFieldOpcion4MouseClicked
-
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         // TODO add your handling code here:
-        if(!(txtFieldPregunta.getText().equals("Escriba una pregunta...") || txtFieldPregunta.getText().equals("")
-        || txtFieldOpcion1.getText().equals("Escriba respuesta...") || txtFieldOpcion1.getText().equals("")
-        || txtFieldOpcion2.getText().equals("Escriba respuesta...") || txtFieldOpcion2.getText().equals("")
-        || txtFieldOpcion3.getText().equals("Escriba respuesta...") || txtFieldOpcion3.getText().equals("")
-        || txtFieldOpcion4.getText().equals("Escriba respuesta...") || txtFieldOpcion4.getText().equals(""))
-        ){
-            
-            if(radioOpcion1.isSelected()){
-            
-                DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).setTituloPreg(txtFieldPregunta.getText());
-                DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion1().setCorrecto(true);
-                DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion2().setCorrecto(false);
-                DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion3().setCorrecto(false);
-                DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion4().setCorrecto(false);
-                DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion1().setTxtOpcion(txtFieldOpcion1.getText());
-                DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion2().setTxtOpcion(txtFieldOpcion2.getText());
-                DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion3().setTxtOpcion(txtFieldOpcion3.getText());
-                DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion4().setTxtOpcion(txtFieldOpcion4.getText());
+        if (!(txtFieldPregunta.getText().equals("Escriba una pregunta...") || txtFieldPregunta.getText().equals("")
+                || txtFieldOpcion1.getText().equals("Escriba respuesta...") || txtFieldOpcion1.getText().equals("")
+                || txtFieldOpcion2.getText().equals("Escriba respuesta...") || txtFieldOpcion2.getText().equals("")
+                || txtFieldOpcion3.getText().equals("Escriba respuesta...") || txtFieldOpcion3.getText().equals("")
+                || txtFieldOpcion4.getText().equals("Escriba respuesta...") || txtFieldOpcion4.getText().equals(""))) {
 
-            }else if(radioOpcion2.isSelected()){
+            if (radioOpcion1.isSelected()) {
 
-                DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).setTituloPreg(txtFieldPregunta.getText());
-                DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion1().setCorrecto(false);
-                DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion2().setCorrecto(true);
-                DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion3().setCorrecto(false);
-                DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion4().setCorrecto(false);
-                DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion1().setTxtOpcion(txtFieldOpcion1.getText());
-                DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion2().setTxtOpcion(txtFieldOpcion2.getText());
-                DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion3().setTxtOpcion(txtFieldOpcion3.getText());
-                DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion4().setTxtOpcion(txtFieldOpcion4.getText());
+                pregunta = new Pregunta(
+                        listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getId_pregunta(),
+                        txtFieldPregunta.getText(),
+                        new Opcion(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion1().getId_opcion(), txtFieldOpcion1.getText(), true),
+                        new Opcion(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion2().getId_opcion(), txtFieldOpcion2.getText(), false),
+                        new Opcion(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion3().getId_opcion(), txtFieldOpcion3.getText(), false),
+                        new Opcion(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion4().getId_opcion(), txtFieldOpcion4.getText(), false)
+                );
 
-            }else if(radioOpcion3.isSelected()){
+                int comp = DAOPregunta.getInstance().updateDatos(pregunta);
 
-                DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).setTituloPreg(txtFieldPregunta.getText());
-                DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion1().setCorrecto(false);
-                DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion2().setCorrecto(false);
-                DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion3().setCorrecto(true);
-                DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion4().setCorrecto(false);
-                DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion1().setTxtOpcion(txtFieldOpcion1.getText());
-                DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion2().setTxtOpcion(txtFieldOpcion2.getText());
-                DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion3().setTxtOpcion(txtFieldOpcion3.getText());
-                DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion4().setTxtOpcion(txtFieldOpcion4.getText());
+                if (comp == 0) {
+                    this.actualizarLista();
 
-            }else if(radioOpcion4.isSelected()){
+                    JOptionPane.showConfirmDialog(this, "Se ha actualizado la pregunta correctamente", "Actualizado correcto", JOptionPane.DEFAULT_OPTION);
+                } else if (comp == 1) {
+                    JOptionPane.showConfirmDialog(this, "La pregunta ya se encutra en la bd (CLAVE DUPLICADA)", "Clave duplicada", JOptionPane.DEFAULT_OPTION);
+                } else {
+                    JOptionPane.showConfirmDialog(this, "Ha ocurrido un error inesperado con la bd", "Error con la bd", JOptionPane.DEFAULT_OPTION);
+                }
 
-                DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).setTituloPreg(txtFieldPregunta.getText());
-                DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion1().setCorrecto(false);
-                DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion2().setCorrecto(false);
-                DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion3().setCorrecto(false);
-                DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion4().setCorrecto(true);
-                DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion1().setTxtOpcion(txtFieldOpcion1.getText());
-                DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion2().setTxtOpcion(txtFieldOpcion2.getText());
-                DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion3().setTxtOpcion(txtFieldOpcion3.getText());
-                DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion4().setTxtOpcion(txtFieldOpcion4.getText());
+            } else if (radioOpcion2.isSelected()) {
+
+                pregunta = new Pregunta(
+                        listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getId_pregunta(),
+                        txtFieldPregunta.getText(),
+                        new Opcion(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion1().getId_opcion(), txtFieldOpcion1.getText(), false),
+                        new Opcion(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion2().getId_opcion(), txtFieldOpcion2.getText(), true),
+                        new Opcion(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion3().getId_opcion(), txtFieldOpcion3.getText(), false),
+                        new Opcion(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion4().getId_opcion(), txtFieldOpcion4.getText(), false)
+                );
+
+                int comp = DAOPregunta.getInstance().updateDatos(pregunta);
+
+                if (comp == 0) {
+                    this.actualizarLista();
+
+                    JOptionPane.showConfirmDialog(this, "Se ha actualizado la pregunta correctamente", "Actualizado correcto", JOptionPane.DEFAULT_OPTION);
+                } else if (comp == 1) {
+                    JOptionPane.showConfirmDialog(this, "La pregunta ya se encutra en la bd (CLAVE DUPLICADA)", "Clave duplicada", JOptionPane.DEFAULT_OPTION);
+                } else {
+                    JOptionPane.showConfirmDialog(this, "Ha ocurrido un error inesperado con la bd", "Error con la bd", JOptionPane.DEFAULT_OPTION);
+                }
+
+            } else if (radioOpcion3.isSelected()) {
+
+                pregunta = new Pregunta(
+                        listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getId_pregunta(),
+                        txtFieldPregunta.getText(),
+                        new Opcion(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion1().getId_opcion(), txtFieldOpcion1.getText(), false),
+                        new Opcion(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion2().getId_opcion(), txtFieldOpcion2.getText(), false),
+                        new Opcion(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion3().getId_opcion(), txtFieldOpcion3.getText(), true),
+                        new Opcion(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion4().getId_opcion(), txtFieldOpcion4.getText(), false)
+                );
+
+                int comp = DAOPregunta.getInstance().updateDatos(pregunta);
+
+                if (comp == 0) {
+                    this.actualizarLista();
+
+                    JOptionPane.showConfirmDialog(this, "Se ha actualizado la pregunta correctamente", "Actualizado correcto", JOptionPane.DEFAULT_OPTION);
+                } else if (comp == 1) {
+                    JOptionPane.showConfirmDialog(this, "La pregunta ya se encutra en la bd (CLAVE DUPLICADA)", "Clave duplicada", JOptionPane.DEFAULT_OPTION);
+                } else {
+                    JOptionPane.showConfirmDialog(this, "Ha ocurrido un error inesperado con la bd", "Error con la bd", JOptionPane.DEFAULT_OPTION);
+                }
+
+            } else if (radioOpcion4.isSelected()) {
+
+                pregunta = new Pregunta(
+                        listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getId_pregunta(),
+                        txtFieldPregunta.getText(),
+                        new Opcion(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion1().getId_opcion(), txtFieldOpcion1.getText(), false),
+                        new Opcion(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion2().getId_opcion(), txtFieldOpcion2.getText(), false),
+                        new Opcion(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion3().getId_opcion(), txtFieldOpcion3.getText(), false),
+                        new Opcion(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion4().getId_opcion(), txtFieldOpcion4.getText(), true)
+                );
+
+                int comp = DAOPregunta.getInstance().updateDatos(pregunta);
+
+                if (comp == 0) {
+                    this.actualizarLista();
+
+                    JOptionPane.showConfirmDialog(this, "Se ha actualizado la pregunta correctamente", "Actualizado correcto", JOptionPane.DEFAULT_OPTION);
+                } else if (comp == 1) {
+                    JOptionPane.showConfirmDialog(this, "La pregunta ya se encutra en la bd (CLAVE DUPLICADA)", "Clave duplicada", JOptionPane.DEFAULT_OPTION);
+                } else {
+                    JOptionPane.showConfirmDialog(this, "Ha ocurrido un error inesperado con la bd", "Error con la bd", JOptionPane.DEFAULT_OPTION);
+                }
 
             }
 
-            this.actualizarLista();
+        } else {
 
-            Integer opcion = JOptionPane.showConfirmDialog(this, "Se ha actualizado la pregunta correctamente", "Actualizado correcto", JOptionPane.DEFAULT_OPTION);
-            
+            JOptionPane.showConfirmDialog(this, "No se ha actualizado la bbdd", "Actualizado erroneo", JOptionPane.DEFAULT_OPTION);
+
         }
-        else{
-            
-            Integer opcion = JOptionPane.showConfirmDialog(this, "No se ha actualizado la bbdd", "Actualizado erroneo", JOptionPane.DEFAULT_OPTION);
-            
-        }
-        
+
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void txtFieldPreguntaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtFieldPreguntaMouseClicked
@@ -309,7 +366,7 @@ public class Vista_MiPanel_Actualizar extends javax.swing.JPanel {
 
     private void listaJPreguntasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaJPreguntasMouseClicked
         // TODO add your handling code here:
-        
+
         txtFieldPregunta.setEnabled(true);
         txtFieldOpcion1.setEnabled(true);
         txtFieldOpcion2.setEnabled(true);
@@ -319,39 +376,56 @@ public class Vista_MiPanel_Actualizar extends javax.swing.JPanel {
         radioOpcion2.setEnabled(true);
         radioOpcion3.setEnabled(true);
         radioOpcion4.setEnabled(true);
-        
-        this.txtFieldPregunta.setText(DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getTituloPreg());
-        if(DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion1().isCorrecto()){
+
+        this.txtFieldPregunta.setText(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getTituloPreg());
+        if (listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion1().isCorrecto()) {
             radioOpcion1.setSelected(true);
-        }
-        else if(DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion2().isCorrecto()){
+        } else if (listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion2().isCorrecto()) {
             radioOpcion2.setSelected(true);
-        }
-        else if(DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion3().isCorrecto()){
+        } else if (listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion3().isCorrecto()) {
             radioOpcion3.setSelected(true);
-        }
-        else if(DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion4().isCorrecto()){
+        } else if (listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion4().isCorrecto()) {
             radioOpcion4.setSelected(true);
         }
-        
-        txtFieldOpcion1.setText(DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion1().getTxtOpcion());
-        txtFieldOpcion2.setText(DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion2().getTxtOpcion());
-        txtFieldOpcion3.setText(DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion3().getTxtOpcion());
-        txtFieldOpcion4.setText(DAOPregunta.getInstance().getDatos().get(listaJPreguntas.getSelectedIndex()).getOpcion4().getTxtOpcion());
-        
+
+        txtFieldOpcion1.setText(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion1().getTxtOpcion());
+        txtFieldOpcion2.setText(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion2().getTxtOpcion());
+        txtFieldOpcion3.setText(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion3().getTxtOpcion());
+        txtFieldOpcion4.setText(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion4().getTxtOpcion());
+        this.lblId1.setText(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion1().getId_opcion() + "");
+        this.lblId2.setText(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion2().getId_opcion() + "");
+        this.lblId3.setText(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion3().getId_opcion() + "");
+        this.lblId4.setText(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion4().getId_opcion() + "");
+
     }//GEN-LAST:event_listaJPreguntasMouseClicked
+
+    private void txtFieldOpcion1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtFieldOpcion1MouseClicked
+        txtFieldOpcion1.setText("");
+    }//GEN-LAST:event_txtFieldOpcion1MouseClicked
+
+    private void txtFieldOpcion2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtFieldOpcion2MouseClicked
+        txtFieldOpcion2.setText("");
+    }//GEN-LAST:event_txtFieldOpcion2MouseClicked
+
+    private void txtFieldOpcion3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtFieldOpcion3MouseClicked
+        txtFieldOpcion3.setText("");
+    }//GEN-LAST:event_txtFieldOpcion3MouseClicked
+
+    private void txtFieldOpcion4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtFieldOpcion4MouseClicked
+        txtFieldOpcion4.setText("");
+    }//GEN-LAST:event_txtFieldOpcion4MouseClicked
 
     private void actualizarLista() {
         listaPreguntas = DAOPregunta.getInstance().getDatos();
-        
+
         this.modelo = new DefaultListModel();
-        
-        for(int i = 0; i < listaPreguntas.size(); i++){
-            this.modelo.addElement(listaPreguntas.get(i).getTituloPreg());
+
+        for (int i = 0; i < listaPreguntas.size(); i++) {
+            this.modelo.addElement(listaPreguntas.get(i).getId_pregunta() + "-" + listaPreguntas.get(i).getTituloPreg());
         }
-        
+
         this.listaJPreguntas.setModel(this.modelo);
-        
+
         this.updateUI();
     }
 
@@ -361,6 +435,10 @@ public class Vista_MiPanel_Actualizar extends javax.swing.JPanel {
     private javax.swing.JButton btnVolver;
     private javax.swing.ButtonGroup grupoRadio;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblId1;
+    private javax.swing.JLabel lblId2;
+    private javax.swing.JLabel lblId3;
+    private javax.swing.JLabel lblId4;
     private javax.swing.JList<String> listaJPreguntas;
     private javax.swing.JRadioButton radioOpcion1;
     private javax.swing.JRadioButton radioOpcion2;
