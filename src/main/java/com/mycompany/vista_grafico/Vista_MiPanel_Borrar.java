@@ -253,7 +253,7 @@ public class Vista_MiPanel_Borrar extends javax.swing.JPanel {
                 || txtFieldOpcion2.getText().equals("Escriba respuesta...") || txtFieldOpcion2.getText().equals("")
                 || txtFieldOpcion3.getText().equals("Escriba respuesta...") || txtFieldOpcion3.getText().equals("")
                 || txtFieldOpcion4.getText().equals("Escriba respuesta...") || txtFieldOpcion4.getText().equals(""))) {
-            int comp = DAOPregunta.getInstance().deleteDatos(new Pregunta(Integer.parseInt(listaJPreguntas.getSelectedValue().charAt(0) + ""), new Opcion(Integer.parseInt(lblId1.getText())), new Opcion(Integer.parseInt(lblId2.getText())), new Opcion(Integer.parseInt(lblId3.getText())), new Opcion(Integer.parseInt(lblId4.getText()))));
+            int comp = DAOPregunta.getInstance().deletePregunta(new Pregunta(Integer.parseInt(listaJPreguntas.getSelectedValue().charAt(0) + ""), new Opcion(Integer.parseInt(lblId1.getText())), new Opcion(Integer.parseInt(lblId2.getText())), new Opcion(Integer.parseInt(lblId3.getText())), new Opcion(Integer.parseInt(lblId4.getText()))));
 
             if (comp == 0) {
                 this.actualizarLista();
@@ -280,7 +280,7 @@ public class Vista_MiPanel_Borrar extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBorrarActionPerformed
 
     private void actualizarLista() {
-        listaPreguntas = DAOPregunta.getInstance().getDatos();
+        listaPreguntas = DAOPregunta.getInstance().getPreguntas();
 
         this.modelo = new DefaultListModel();
 

@@ -6,6 +6,7 @@ package com.mycompany.dao_grafico;
 
 import com.mycompany.modelo_grafico.Opcion;
 import com.mycompany.modelo_grafico.Pregunta;
+import com.mycompany.modelo_grafico.Usuario;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ public class DAOPregunta {
     //CRUD
     private static DAOPregunta daoPregunta = null;
     private static ArrayList<Pregunta> listaPreguntas = null;
+    private static ArrayList<Usuario> listaUsuarios = null;
 
     private DAOPregunta() {
         //Constructor
@@ -29,6 +31,10 @@ public class DAOPregunta {
         if (daoPregunta == null) {
             daoPregunta = new DAOPregunta();
         }
+        
+        if(listaUsuarios == null){
+            listaUsuarios = new ArrayList<Usuario>();
+        }
 
         if (listaPreguntas == null) {
             listaPreguntas = new ArrayList<Pregunta>();
@@ -36,9 +42,17 @@ public class DAOPregunta {
 
         return daoPregunta;
     }
-
+    
     //Read
-    public ArrayList<Pregunta> getDatos() {
+    public ArrayList<Usuario> getUsuarios() {
+
+        listaUsuarios = (ArrayList<Usuario>) ConexionDB.getUsuarios();
+        return listaUsuarios;
+
+    }
+    
+    //Read
+    public ArrayList<Pregunta> getPreguntas() {
 
         listaPreguntas = (ArrayList<Pregunta>) ConexionDB.getPreguntas();
         return listaPreguntas;
@@ -46,7 +60,7 @@ public class DAOPregunta {
     }
 
     //Create
-    public int setDatos(Pregunta pregunta) {
+    public int setPregunta(Pregunta pregunta) {
         try {
             ConexionDB.insertarPregunta(pregunta);
             return 0;
@@ -59,14 +73,14 @@ public class DAOPregunta {
 
     //Update
 
-    public int updateDatos(Pregunta pregunta) {
+    public int updatePregunta(Pregunta pregunta) {
         
         return ConexionDB.updatePregunta(pregunta);
         
     }
     
     //Delete
-    public int deleteDatos(Pregunta pregunta) {
+    public int deletePregunta(Pregunta pregunta) {
         return ConexionDB.deletePregunta(pregunta);
     }
 

@@ -4,6 +4,7 @@
  */
 package com.mycompany.vista_grafico;
 
+import com.mycompany.modelo_grafico.Usuario;
 import javax.swing.JMenu;
 import javax.swing.JPanel;
 
@@ -12,6 +13,8 @@ import javax.swing.JPanel;
  * @author Dam
  */
 public class Vista_MiVentana extends javax.swing.JFrame {
+    
+    private Usuario usuarioActual;
     
     JPanel panelActivo;
     Vista_MiPanel_Inicio miPanelInicio;
@@ -46,6 +49,9 @@ public class Vista_MiVentana extends javax.swing.JFrame {
         menuNuevo = new javax.swing.JMenuItem();
         menuActualizar = new javax.swing.JMenuItem();
         menuBorrar = new javax.swing.JMenuItem();
+        menuUsuarios = new javax.swing.JMenu();
+        menuUsuarioCambiar = new javax.swing.JMenuItem();
+        menuUsuarioNuevo = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,6 +82,21 @@ public class Vista_MiVentana extends javax.swing.JFrame {
         menuOpciones.add(menuBorrar);
 
         menuBarra.add(menuOpciones);
+
+        menuUsuarios.setText("Usuarios");
+
+        menuUsuarioCambiar.setText("Cambiar");
+        menuUsuarioCambiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuUsuarioCambiarActionPerformed(evt);
+            }
+        });
+        menuUsuarios.add(menuUsuarioCambiar);
+
+        menuUsuarioNuevo.setText("Nuevo");
+        menuUsuarios.add(menuUsuarioNuevo);
+
+        menuBarra.add(menuUsuarios);
 
         setJMenuBar(menuBarra);
 
@@ -114,6 +135,13 @@ public class Vista_MiVentana extends javax.swing.JFrame {
         this.cambiarPanel(new Vista_MiPanel_Borrar(this));
         
     }//GEN-LAST:event_menuBorrarActionPerformed
+
+    private void menuUsuarioCambiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuUsuarioCambiarActionPerformed
+        // TODO add your handling code here:
+        
+        this.cambiarPanel(new Vista_MiPanel_Usuario(this));
+        
+    }//GEN-LAST:event_menuUsuarioCambiarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -169,6 +197,14 @@ public class Vista_MiVentana extends javax.swing.JFrame {
     public void setMenuVisible(){
         this.menuOpciones.setVisible(true);
     }
+    
+    public Usuario getUsuarioActual(){
+        return this.usuarioActual;
+    }
+    
+    public void setUsuarioActual(Usuario usuario){
+        this.usuarioActual = usuario;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem menuActualizar;
@@ -176,5 +212,8 @@ public class Vista_MiVentana extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuBorrar;
     private javax.swing.JMenuItem menuNuevo;
     private javax.swing.JMenu menuOpciones;
+    private javax.swing.JMenuItem menuUsuarioCambiar;
+    private javax.swing.JMenuItem menuUsuarioNuevo;
+    private javax.swing.JMenu menuUsuarios;
     // End of variables declaration//GEN-END:variables
 }

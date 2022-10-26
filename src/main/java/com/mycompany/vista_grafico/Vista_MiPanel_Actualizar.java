@@ -36,7 +36,7 @@ public class Vista_MiPanel_Actualizar extends javax.swing.JPanel {
         this.miPanelInicio = new Vista_MiPanel_Inicio(this.miVentana);
 
         this.actualizarLista();
-
+        
     }
 
     /**
@@ -268,7 +268,7 @@ public class Vista_MiPanel_Actualizar extends javax.swing.JPanel {
                         new Opcion(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion4().getId_opcion(), txtFieldOpcion4.getText(), false)
                 );
 
-                int comp = DAOPregunta.getInstance().updateDatos(pregunta);
+                int comp = DAOPregunta.getInstance().updatePregunta(pregunta);
 
                 if (comp == 0) {
                     this.actualizarLista();
@@ -291,7 +291,7 @@ public class Vista_MiPanel_Actualizar extends javax.swing.JPanel {
                         new Opcion(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion4().getId_opcion(), txtFieldOpcion4.getText(), false)
                 );
 
-                int comp = DAOPregunta.getInstance().updateDatos(pregunta);
+                int comp = DAOPregunta.getInstance().updatePregunta(pregunta);
 
                 if (comp == 0) {
                     this.actualizarLista();
@@ -314,7 +314,7 @@ public class Vista_MiPanel_Actualizar extends javax.swing.JPanel {
                         new Opcion(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion4().getId_opcion(), txtFieldOpcion4.getText(), false)
                 );
 
-                int comp = DAOPregunta.getInstance().updateDatos(pregunta);
+                int comp = DAOPregunta.getInstance().updatePregunta(pregunta);
 
                 if (comp == 0) {
                     this.actualizarLista();
@@ -337,7 +337,7 @@ public class Vista_MiPanel_Actualizar extends javax.swing.JPanel {
                         new Opcion(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion4().getId_opcion(), txtFieldOpcion4.getText(), true)
                 );
 
-                int comp = DAOPregunta.getInstance().updateDatos(pregunta);
+                int comp = DAOPregunta.getInstance().updatePregunta(pregunta);
 
                 if (comp == 0) {
                     this.actualizarLista();
@@ -416,7 +416,7 @@ public class Vista_MiPanel_Actualizar extends javax.swing.JPanel {
     }//GEN-LAST:event_txtFieldOpcion4MouseClicked
 
     private void actualizarLista() {
-        listaPreguntas = DAOPregunta.getInstance().getDatos();
+        listaPreguntas = DAOPregunta.getInstance().getPreguntas();
 
         this.modelo = new DefaultListModel();
 

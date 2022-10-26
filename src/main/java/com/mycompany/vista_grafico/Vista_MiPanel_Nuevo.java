@@ -233,7 +233,7 @@ public class Vista_MiPanel_Nuevo extends javax.swing.JPanel {
                 || txtFieldOpcion4.getText().equals("Escriba respuesta...") || txtFieldOpcion4.getText().equals(""))) {
 
             if (radioOpcion1.isSelected()) {
-                int comp = DAOPregunta.getInstance().setDatos(new Pregunta(txtFieldPregunta.getText(), new Opcion(txtFieldOpcion1.getText(), true), new Opcion(txtFieldOpcion2.getText(), false), new Opcion(txtFieldOpcion3.getText(), false), new Opcion(txtFieldOpcion4.getText(), false)));
+                int comp = DAOPregunta.getInstance().setPregunta(new Pregunta(txtFieldPregunta.getText(), new Opcion(txtFieldOpcion1.getText(), true), new Opcion(txtFieldOpcion2.getText(), false), new Opcion(txtFieldOpcion3.getText(), false), new Opcion(txtFieldOpcion4.getText(), false)));
                 
                 if (comp == 0) {
                     continuar = true;
@@ -247,7 +247,7 @@ public class Vista_MiPanel_Nuevo extends javax.swing.JPanel {
                 
             } else if (radioOpcion2.isSelected()) {
 
-                int comp = DAOPregunta.getInstance().setDatos(new Pregunta(txtFieldPregunta.getText(), new Opcion(txtFieldOpcion1.getText(), false), new Opcion(txtFieldOpcion2.getText(), true), new Opcion(txtFieldOpcion3.getText(), false), new Opcion(txtFieldOpcion4.getText(), false)));
+                int comp = DAOPregunta.getInstance().setPregunta(new Pregunta(txtFieldPregunta.getText(), new Opcion(txtFieldOpcion1.getText(), false), new Opcion(txtFieldOpcion2.getText(), true), new Opcion(txtFieldOpcion3.getText(), false), new Opcion(txtFieldOpcion4.getText(), false)));
                 
                 if (comp == 0) {
                     continuar = true;
@@ -261,7 +261,7 @@ public class Vista_MiPanel_Nuevo extends javax.swing.JPanel {
                 
             } else if (radioOpcion3.isSelected()) {
 
-                int comp = DAOPregunta.getInstance().setDatos(new Pregunta(txtFieldPregunta.getText(), new Opcion(txtFieldOpcion1.getText(), false), new Opcion(txtFieldOpcion2.getText(), false), new Opcion(txtFieldOpcion3.getText(), true), new Opcion(txtFieldOpcion4.getText(), false)));
+                int comp = DAOPregunta.getInstance().setPregunta(new Pregunta(txtFieldPregunta.getText(), new Opcion(txtFieldOpcion1.getText(), false), new Opcion(txtFieldOpcion2.getText(), false), new Opcion(txtFieldOpcion3.getText(), true), new Opcion(txtFieldOpcion4.getText(), false)));
                 
                 if (comp == 0) {
                     continuar = true;
@@ -275,7 +275,7 @@ public class Vista_MiPanel_Nuevo extends javax.swing.JPanel {
                 
             } else if (radioOpcion4.isSelected()) {
 
-                int comp = DAOPregunta.getInstance().setDatos(new Pregunta(txtFieldPregunta.getText(), new Opcion(txtFieldOpcion1.getText(), false), new Opcion(txtFieldOpcion2.getText(), false), new Opcion(txtFieldOpcion3.getText(), false), new Opcion(txtFieldOpcion4.getText(), true)));
+                int comp = DAOPregunta.getInstance().setPregunta(new Pregunta(txtFieldPregunta.getText(), new Opcion(txtFieldOpcion1.getText(), false), new Opcion(txtFieldOpcion2.getText(), false), new Opcion(txtFieldOpcion3.getText(), false), new Opcion(txtFieldOpcion4.getText(), true)));
                 
                 if (comp == 0) {
                     continuar = true;
@@ -340,7 +340,7 @@ public class Vista_MiPanel_Nuevo extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void actualizarLista() {
-        listaPreguntas = DAOPregunta.getInstance().getDatos();
+        listaPreguntas = DAOPregunta.getInstance().getPreguntas();
 
         this.modelo = new DefaultListModel();
 

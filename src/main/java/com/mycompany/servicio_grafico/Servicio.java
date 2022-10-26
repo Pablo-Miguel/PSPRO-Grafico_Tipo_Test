@@ -6,6 +6,7 @@ package com.mycompany.servicio_grafico;
 
 import com.mycompany.dao_grafico.DAOPregunta;
 import com.mycompany.modelo_grafico.Pregunta;
+import com.mycompany.modelo_grafico.Usuario;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -17,9 +18,11 @@ public class Servicio {
     
     private static Servicio servicio;
     private ArrayList<Pregunta> listaPreguntas;
+    private ArrayList<Usuario> listaUsuarios;
 
     private Servicio() {
-        this.listaPreguntas = DAOPregunta.getInstance().getDatos();
+        this.listaPreguntas = DAOPregunta.getInstance().getPreguntas();
+        this.listaUsuarios = DAOPregunta.getInstance().getUsuarios();
     }
     
     public static Servicio getInstance(){
@@ -33,6 +36,10 @@ public class Servicio {
 
     public ArrayList<Pregunta> getListaPreguntas() {
         return listaPreguntas;
+    }
+    
+    public ArrayList<Usuario> getListaUsuarios() {
+        return listaUsuarios;
     }
 
     public void setListaPreguntas(ArrayList<Pregunta> listaPreguntas) {
