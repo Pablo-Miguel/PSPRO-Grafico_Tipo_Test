@@ -4,7 +4,10 @@
  */
 package com.mycompany.vista_grafico;
 
-import com.mycompany.servicio_grafico.Servicio;
+import com.mycompany.dao_grafico.DAOPregunta;
+import com.mycompany.modelo_grafico.Pregunta;
+import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -21,9 +24,17 @@ public class Vista_MiPanel_Inicio extends javax.swing.JPanel {
         
         this.miVentana = miVentana;
         
+        if(miVentana.getUsuarioActual() != null){
+            lblUsuario.setText("Usuario: " + miVentana.getUsuarioActual().getNombre());
+            btnJugar.setEnabled(true);
+        }
+        
+        
         this.miVentana.setMenuVisible();
+        
+        this.updateUI();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,6 +46,7 @@ public class Vista_MiPanel_Inicio extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         btnJugar = new javax.swing.JButton();
+        lblUsuario = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(574, 339));
 
@@ -44,23 +56,33 @@ public class Vista_MiPanel_Inicio extends javax.swing.JPanel {
 
         btnJugar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnJugar.setText("Jugar");
+        btnJugar.setEnabled(false);
         btnJugar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnJugarActionPerformed(evt);
             }
         });
 
+        lblUsuario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(317, 317, 317)
+                        .addComponent(btnJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(317, 317, 317)
-                .addComponent(btnJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(155, 155, 155)
+                .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -68,18 +90,25 @@ public class Vista_MiPanel_Inicio extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(102, 102, 102)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(162, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJugarActionPerformed
         // TODO add your handling code here:
         
-        if(!Servicio.getInstance().getListaPreguntas().isEmpty()){
+        if(!DAOPregunta.getInstance().getPreguntas(miVentana.getUsuarioActual()).isEmpty()){
             this.miVentana.setMenuOculto();
-            this.miVentana.cambiarPanel(new Vista_MiPanel_Preg(miVentana, Servicio.getInstance().getListaPreguntasShuffle()));
+            
+            ArrayList<Pregunta> listaTemp = new ArrayList<Pregunta>(DAOPregunta.getInstance().getPreguntas(miVentana.getUsuarioActual()));
+            
+            Collections.shuffle(listaTemp);
+                    
+            this.miVentana.cambiarPanel(new Vista_MiPanel_Preg(miVentana, listaTemp));
         }
         
     }//GEN-LAST:event_btnJugarActionPerformed
@@ -88,5 +117,6 @@ public class Vista_MiPanel_Inicio extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnJugar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblUsuario;
     // End of variables declaration//GEN-END:variables
 }

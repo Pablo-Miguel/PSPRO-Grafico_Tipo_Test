@@ -4,6 +4,7 @@
  */
 package com.mycompany.vista_grafico;
 
+import com.mycompany.dao_grafico.DAOPregunta;
 import com.mycompany.modelo_grafico.Usuario;
 import javax.swing.JMenu;
 import javax.swing.JPanel;
@@ -24,6 +25,10 @@ public class Vista_MiVentana extends javax.swing.JFrame {
      */
     public Vista_MiVentana() {
         initComponents();
+        
+        if(!DAOPregunta.getInstance().getUsuarios().isEmpty()){
+            usuarioActual = DAOPregunta.getInstance().getUsuarios().get(0);
+        }
         
         miPanelInicio = new Vista_MiPanel_Inicio(this);
         
@@ -52,6 +57,8 @@ public class Vista_MiVentana extends javax.swing.JFrame {
         menuUsuarios = new javax.swing.JMenu();
         menuUsuarioCambiar = new javax.swing.JMenuItem();
         menuUsuarioNuevo = new javax.swing.JMenuItem();
+        menuUsuarioActualizar = new javax.swing.JMenuItem();
+        menuUsuarioBorrar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,7 +101,28 @@ public class Vista_MiVentana extends javax.swing.JFrame {
         menuUsuarios.add(menuUsuarioCambiar);
 
         menuUsuarioNuevo.setText("Nuevo");
+        menuUsuarioNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuUsuarioNuevoActionPerformed(evt);
+            }
+        });
         menuUsuarios.add(menuUsuarioNuevo);
+
+        menuUsuarioActualizar.setText("Actualizar");
+        menuUsuarioActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuUsuarioActualizarActionPerformed(evt);
+            }
+        });
+        menuUsuarios.add(menuUsuarioActualizar);
+
+        menuUsuarioBorrar.setText("Borrar");
+        menuUsuarioBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuUsuarioBorrarActionPerformed(evt);
+            }
+        });
+        menuUsuarios.add(menuUsuarioBorrar);
 
         menuBarra.add(menuUsuarios);
 
@@ -139,9 +167,30 @@ public class Vista_MiVentana extends javax.swing.JFrame {
     private void menuUsuarioCambiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuUsuarioCambiarActionPerformed
         // TODO add your handling code here:
         
-        this.cambiarPanel(new Vista_MiPanel_Usuario(this));
+        this.cambiarPanel(new Vista_MiPanel_UsuarioCambiar(this));
         
     }//GEN-LAST:event_menuUsuarioCambiarActionPerformed
+
+    private void menuUsuarioNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuUsuarioNuevoActionPerformed
+        // TODO add your handling code here:
+        
+        this.cambiarPanel(new Vista_MiPanel_UsuarioNuevo(this));
+        
+    }//GEN-LAST:event_menuUsuarioNuevoActionPerformed
+
+    private void menuUsuarioActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuUsuarioActualizarActionPerformed
+        // TODO add your handling code here:
+        
+        this.cambiarPanel(new Vista_MiPanel_UsuarioActualizar(this));
+        
+    }//GEN-LAST:event_menuUsuarioActualizarActionPerformed
+
+    private void menuUsuarioBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuUsuarioBorrarActionPerformed
+        // TODO add your handling code here:
+        
+        this.cambiarPanel(new Vista_MiPanel_UsuarioBorrar(this));
+        
+    }//GEN-LAST:event_menuUsuarioBorrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -212,6 +261,8 @@ public class Vista_MiVentana extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuBorrar;
     private javax.swing.JMenuItem menuNuevo;
     private javax.swing.JMenu menuOpciones;
+    private javax.swing.JMenuItem menuUsuarioActualizar;
+    private javax.swing.JMenuItem menuUsuarioBorrar;
     private javax.swing.JMenuItem menuUsuarioCambiar;
     private javax.swing.JMenuItem menuUsuarioNuevo;
     private javax.swing.JMenu menuUsuarios;

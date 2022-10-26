@@ -21,11 +21,11 @@ public class Servicio {
     private ArrayList<Usuario> listaUsuarios;
 
     private Servicio() {
-        this.listaPreguntas = DAOPregunta.getInstance().getPreguntas();
+        //this.listaPreguntas = DAOPregunta.getInstance().getPreguntas();
         this.listaUsuarios = DAOPregunta.getInstance().getUsuarios();
     }
     
-    public static Servicio getInstance(){
+    private static Servicio getInstance(){
         
         if(servicio == null){
             servicio = new Servicio();    

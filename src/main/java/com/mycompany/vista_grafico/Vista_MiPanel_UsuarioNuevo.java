@@ -14,30 +14,24 @@ import javax.swing.JOptionPane;
  *
  * @author Nitro
  */
-public class Vista_MiPanel_Usuario extends javax.swing.JPanel {
-    
+public class Vista_MiPanel_UsuarioNuevo extends javax.swing.JPanel {
+
     private Vista_MiVentana miVentana;
-    private Vista_MiPanel_Inicio miPanelInicio;
-    
+
     private DefaultListModel modelo;
-    
+
     private ArrayList<Usuario> listaUsuarios;
-    
+
     /**
-     * Creates new form Vista_MiPanel_Usuario
+     * Creates new form Vista_MiPanel_UsuarioNuevo
      */
-    public Vista_MiPanel_Usuario(Vista_MiVentana miVentana) {
+    public Vista_MiPanel_UsuarioNuevo(Vista_MiVentana miVentana) {
         initComponents();
-        
+
         this.miVentana = miVentana;
-        this.miPanelInicio = new Vista_MiPanel_Inicio(this.miVentana);
-        
-        if(miVentana.getUsuarioActual() != null){
-            txtFieldUsuario.setText(miVentana.getUsuarioActual().getNombre());
-        }
-        
+
         this.actualizarLista();
-        
+
     }
 
     /**
@@ -53,26 +47,20 @@ public class Vista_MiPanel_Usuario extends javax.swing.JPanel {
         listaJUsuarios = new javax.swing.JList<>();
         txtFieldUsuario = new javax.swing.JTextField();
         lblUsuario = new javax.swing.JLabel();
-        btnCambiar = new javax.swing.JButton();
+        btnAnyadir = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
 
-        listaJUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                listaJUsuariosMouseClicked(evt);
-            }
-        });
+        listaJUsuarios.setEnabled(false);
         jScrollPane1.setViewportView(listaJUsuarios);
-
-        txtFieldUsuario.setEditable(false);
 
         lblUsuario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblUsuario.setText("Usuario actual");
+        lblUsuario.setText("Nombre para el usuario");
 
-        btnCambiar.setText("Cambiar");
-        btnCambiar.addActionListener(new java.awt.event.ActionListener() {
+        btnAnyadir.setText("Añadir");
+        btnAnyadir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCambiarActionPerformed(evt);
+                btnAnyadirActionPerformed(evt);
             }
         });
 
@@ -98,7 +86,7 @@ public class Vista_MiPanel_Usuario extends javax.swing.JPanel {
                             .addComponent(txtFieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(107, 107, 107)
-                        .addComponent(btnCambiar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnAnyadir, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -116,7 +104,7 @@ public class Vista_MiPanel_Usuario extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnCambiar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnAnyadir, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnVolver))))
@@ -128,52 +116,54 @@ public class Vista_MiPanel_Usuario extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        
-        this.miVentana.cambiarPanel(this.miPanelInicio);
-        
+
+        this.miVentana.cambiarPanel(new Vista_MiPanel_Inicio(miVentana));
+
     }//GEN-LAST:event_btnVolverActionPerformed
 
-    private void listaJUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaJUsuariosMouseClicked
-        
-        txtFieldUsuario.setText(listaUsuarios.get(listaJUsuarios.getSelectedIndex()).getNombre());
-        
-    }//GEN-LAST:event_listaJUsuariosMouseClicked
-
-    private void btnCambiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarActionPerformed
+    private void btnAnyadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnyadirActionPerformed
         // TODO add your handling code here:
-        
-        if(listaJUsuarios.getSelectedIndex() != -1){
-            miVentana.setUsuarioActual(listaUsuarios.get(listaJUsuarios.getSelectedIndex()));
-        JOptionPane.showConfirmDialog(this, "Se ha entrado en la sesión de " + miVentana.getUsuarioActual().getNombre(), "Sesión", JOptionPane.DEFAULT_OPTION);
-        }
-        else {
-            JOptionPane.showConfirmDialog(this, "Por favor, seleccione un usuario y pulse 'Cambiar'", "No hay usuario", JOptionPane.DEFAULT_OPTION);
-        }
-        
-    }//GEN-LAST:event_btnCambiarActionPerformed
 
+        if (!txtFieldUsuario.getText().equals("")) {
+            int comp = DAOPregunta.getInstance().insertarUsuario(new Usuario(txtFieldUsuario.getText()));
+            
+            if (comp == 0) {
+                JOptionPane.showMessageDialog(this, "El usuario se ha añadido correctamente");
+            } else if (comp == 1) {
+                JOptionPane.showMessageDialog(this, "El usuario ya está en la base de datos");
+            } else if (comp == -1) {
+                JOptionPane.showMessageDialog(this, "Ha ocurrido un error inesperado al crear el usuario");
+            }
+            
+            txtFieldUsuario.setText("");
+            this.actualizarLista();
+        
+        } else {
+            JOptionPane.showConfirmDialog(this, "Introduzca un nombre para crear un nuevo usuario", "Campo vacío", JOptionPane.DEFAULT_OPTION);
+        }
+
+    }//GEN-LAST:event_btnAnyadirActionPerformed
+
+    private void actualizarLista() {
+        listaUsuarios = DAOPregunta.getInstance().getUsuarios();
+
+        this.modelo = new DefaultListModel();
+
+        for (int i = 0; i < listaUsuarios.size(); i++) {
+            this.modelo.addElement(listaUsuarios.get(i).getNombre());
+        }
+
+        this.listaJUsuarios.setModel(this.modelo);
+
+        this.updateUI();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCambiar;
+    private javax.swing.JButton btnAnyadir;
     private javax.swing.JButton btnVolver;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JList<String> listaJUsuarios;
     private javax.swing.JTextField txtFieldUsuario;
     // End of variables declaration//GEN-END:variables
-
-    private void actualizarLista() {
-        listaUsuarios = DAOPregunta.getInstance().getUsuarios();
-        
-        this.modelo = new DefaultListModel();
-        
-        for (int i = 0; i < listaUsuarios.size(); i++) {
-            this.modelo.addElement(listaUsuarios.get(i).getNombre());
-        }
-        
-        this.listaJUsuarios.setModel(this.modelo);
-        
-        this.updateUI();
-    }
-
 }

@@ -52,17 +52,17 @@ public class DAOPregunta {
     }
     
     //Read
-    public ArrayList<Pregunta> getPreguntas() {
+    public ArrayList<Pregunta> getPreguntas(Usuario usuario) {
 
-        listaPreguntas = (ArrayList<Pregunta>) ConexionDB.getPreguntas();
+        listaPreguntas = (ArrayList<Pregunta>) ConexionDB.getPreguntas(usuario);
         return listaPreguntas;
 
     }
 
     //Create
-    public int setPregunta(Pregunta pregunta) {
+    public int setPregunta(Pregunta pregunta, Usuario usuario) {
         try {
-            ConexionDB.insertarPregunta(pregunta);
+            ConexionDB.insertarPregunta(pregunta, usuario);
             return 0;
         } catch (SQLIntegrityConstraintViolationException ex) {
             return 1;
@@ -70,18 +70,42 @@ public class DAOPregunta {
             return -1;
         }
     }
+    
+    //Create
+    public int insertarUsuario(Usuario usuario) {
+        try {
+            ConexionDB.insertarUsuario(usuario);
+            return 0;
+        } catch (SQLIntegrityConstraintViolationException ex) {
+            return 1;
+        } catch (SQLException ex) {
+            return -1;
+        }
+        
+    }
 
     //Update
-
     public int updatePregunta(Pregunta pregunta) {
         
         return ConexionDB.updatePregunta(pregunta);
         
     }
     
+    //Update
+    public int actualizarUsuario(Usuario usuario) {
+        
+        return ConexionDB.updateUsuario(usuario);
+        
+    }
+    
     //Delete
     public int deletePregunta(Pregunta pregunta) {
         return ConexionDB.deletePregunta(pregunta);
+    }
+    
+    //Delete
+    public int borrarUsuario(Usuario usuario) {
+        return ConexionDB.deleteUsuario(usuario);
     }
 
 }

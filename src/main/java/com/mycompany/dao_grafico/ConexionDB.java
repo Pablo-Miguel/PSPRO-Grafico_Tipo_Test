@@ -42,7 +42,7 @@ public class ConexionDB {
         }
     }
 
-    public static void insertarPregunta(Pregunta pregunta) throws SQLException, SQLIntegrityConstraintViolationException {
+    public static void insertarPregunta(Pregunta pregunta, Usuario usuario) throws SQLException, SQLIntegrityConstraintViolationException {
 
         enlace();
 
@@ -53,12 +53,12 @@ public class ConexionDB {
             stmt = conn.prepareStatement(sql);
             System.out.println(stmt.toString());
             rs = stmt.executeQuery();
-            
+
             Integer id_pregunta = null;
             if (rs.next()) {
                 id_pregunta = rs.getInt("ID_MAX");
             }
-            
+
             pregunta.setId_pregunta(id_pregunta);
 
             ArrayList<Opcion> listaOpciones = new ArrayList<Opcion>();
@@ -66,11 +66,12 @@ public class ConexionDB {
             listaOpciones.add(pregunta.getOpcion2());
             listaOpciones.add(pregunta.getOpcion3());
             listaOpciones.add(pregunta.getOpcion4());
-            
-            sql = "INSERT INTO Pregunta (Id_pregunta, Pregunta) VALUES (?, ?);";
+
+            sql = "INSERT INTO Pregunta (Id_pregunta, Id_usuario, Pregunta) VALUES (?, ?, ?);";
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, pregunta.getId_pregunta());
-            stmt.setString(2, pregunta.getTituloPreg());
+            stmt.setInt(2, usuario.getIdUsuario());
+            stmt.setString(3, pregunta.getTituloPreg());
             System.out.println(stmt.toString());
             stmt.execute();
 
@@ -102,14 +103,47 @@ public class ConexionDB {
         } catch (SQLException ex) {
             System.out.println("Error SQL: " + ex.toString());
             throw new SQLException();
-        }
-        finally{
+        } finally {
             cerrarSesion();
         }
 
     }
 
-    public static List<Pregunta> getPreguntas() {
+    public static void insertarUsuario(Usuario usuario) throws SQLException, SQLIntegrityConstraintViolationException {
+        enlace();
+
+        try {
+
+            String sql = "SELECT MAX(Id_usuario) + 1 AS ID_MAX FROM Usuario;";
+            stmt = conn.prepareStatement(sql);
+            System.out.println(stmt.toString());
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                usuario.setIdUsuario(rs.getInt("ID_MAX"));
+            }
+
+            sql = "INSERT INTO Usuario (Id_usuario, Nombre) VALUES (?, ?);";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, usuario.getIdUsuario());
+            stmt.setString(2, usuario.getNombre());
+            System.out.println(stmt.toString());
+            stmt.execute();
+
+        } catch (SQLIntegrityConstraintViolationException ex) {
+            System.out.println("Error SQL: " + ex.toString());
+            throw new SQLIntegrityConstraintViolationException();
+        } catch (SQLException ex) {
+            System.out.println("Error SQL: " + ex.toString());
+            throw new SQLException();
+        } finally {
+            cerrarSesion();
+        }
+
+        cerrarSesion();
+    }
+
+    public static List<Pregunta> getPreguntas(Usuario usuario) {
 
         enlace();
         List<Pregunta> listaPreguntas = null;
@@ -120,8 +154,9 @@ public class ConexionDB {
             ArrayList<Integer> listaPreguntasIds = new ArrayList<Integer>();
             ArrayList<Opcion> listaOpciones = new ArrayList<Opcion>();
 
-            String sql = "SELECT Id_pregunta FROM Pregunta;";
+            String sql = "SELECT Id_pregunta FROM Pregunta WHERE Id_usuario=?;";
             stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, usuario.getIdUsuario());
             System.out.println(stmt.toString());
             rs = stmt.executeQuery();
 
@@ -168,13 +203,14 @@ public class ConexionDB {
             System.out.println("Error SQL: " + ex.getMessage());
             ex.printStackTrace();
         }
-
-        cerrarSesion();
-
+        finally {
+            cerrarSesion();
+        }
+        
         return listaPreguntas;
 
     }
-    
+
     public static List<Usuario> getUsuarios() {
 
         enlace();
@@ -188,11 +224,11 @@ public class ConexionDB {
             stmt = conn.prepareStatement(sql);
             System.out.println(stmt.toString());
             rs = stmt.executeQuery();
-            
+
             while (rs.next()) {
-                
+
                 listaUsuarios.add(new Usuario(rs.getInt("Id_usuario"), rs.getString("Nombre")));
-                
+
             }
 
         } catch (SQLException ex) {
@@ -260,14 +296,14 @@ public class ConexionDB {
             stmt.setInt(2, pregunta.getId_pregunta());
             System.out.println(stmt.toString());
             stmt.executeUpdate();
-            
+
             ArrayList<Opcion> listaOpciones = new ArrayList<Opcion>();
             listaOpciones.add(pregunta.getOpcion1());
             listaOpciones.add(pregunta.getOpcion2());
             listaOpciones.add(pregunta.getOpcion3());
             listaOpciones.add(pregunta.getOpcion4());
-            
-            for(int i = 0; i < listaOpciones.size(); i++){
+
+            for (int i = 0; i < listaOpciones.size(); i++) {
                 sql = "UPDATE Opcion SET Texto=?, Correcto=? WHERE Id_opcion=?;";
                 stmt = conn.prepareStatement(sql);
                 stmt.setString(1, listaOpciones.get(i).getTxtOpcion());
@@ -277,7 +313,7 @@ public class ConexionDB {
                 stmt.executeUpdate();
             }
 
-        } catch (SQLIntegrityConstraintViolationException ex){
+        } catch (SQLIntegrityConstraintViolationException ex) {
             System.out.println("Error SQL: " + ex.getMessage());
             return 1;
         } catch (SQLException ex) {
@@ -287,23 +323,49 @@ public class ConexionDB {
         } finally {
             cerrarSesion();
         }
-        
+
         return 0;
     }
-    
+
+    public static int updateUsuario(Usuario usuario) {
+        enlace();
+
+        try {
+
+            String sql = "UPDATE Usuario SET Nombre=? WHERE Id_usuario=?;";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, usuario.getNombre());
+            stmt.setInt(2, usuario.getIdUsuario());
+            System.out.println(stmt.toString());
+            stmt.executeUpdate();
+
+        } catch (SQLIntegrityConstraintViolationException ex) {
+            System.out.println("Error SQL: " + ex.getMessage());
+            return 1;
+        } catch (SQLException ex) {
+            System.out.println("Error SQL: " + ex.getMessage());
+            ex.printStackTrace();
+            return -1;
+        } finally {
+            cerrarSesion();
+        }
+
+        return 0;
+    }
+
     public static Integer deletePregunta(Pregunta pregunta) {
 
         enlace();
 
         try {
-            
+
             String sql = "";
             ArrayList<Opcion> listaOpciones = new ArrayList<Opcion>();
             listaOpciones.add(pregunta.getOpcion1());
             listaOpciones.add(pregunta.getOpcion2());
             listaOpciones.add(pregunta.getOpcion3());
             listaOpciones.add(pregunta.getOpcion4());
-            
+
             for (int i = 0; i < listaOpciones.size(); i++) {
 
                 sql = "DELETE FROM Opcion WHERE Id_opcion=?;";
@@ -332,6 +394,62 @@ public class ConexionDB {
         return -1;
     }
 
+    public static int deleteUsuario(Usuario usuario) {
+        
+        List<Pregunta> listaPreguntas = ConexionDB.getPreguntas(usuario);
+        
+        enlace();
+
+        try {
+
+            ArrayList<Opcion> listaOpciones;
+            
+            String sql = "";
+            
+            if(listaPreguntas != null){
+                for (int i = 0; i < listaPreguntas.size(); i++) {
+                    listaOpciones = new ArrayList<Opcion>();
+                    listaOpciones.add(listaPreguntas.get(i).getOpcion1());
+                    listaOpciones.add(listaPreguntas.get(i).getOpcion2());
+                    listaOpciones.add(listaPreguntas.get(i).getOpcion3());
+                    listaOpciones.add(listaPreguntas.get(i).getOpcion4());
+
+                    for (int j = 0; j < listaOpciones.size(); j++) {
+                        sql = "DELETE FROM Opcion WHERE Id_opcion=?;";
+                        stmt = conn.prepareStatement(sql);
+                        stmt.setInt(1, listaOpciones.get(j).getId_opcion());
+                        System.out.println(stmt.toString());
+                        stmt.execute();
+                    }
+                    
+                    sql = "DELETE FROM Pregunta WHERE Id_pregunta=?;";
+                    stmt = conn.prepareStatement(sql);
+                    stmt.setInt(1, listaPreguntas.get(i).getId_pregunta());
+                    System.out.println(stmt.toString());
+                    stmt.execute();
+                    
+                }
+            }
+            
+            sql = "DELETE FROM Usuario WHERE Id_usuario=?;";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, usuario.getIdUsuario());
+            System.out.println(stmt.toString());
+            stmt.execute();
+
+            return 0;
+
+        } catch (SQLException ex) {
+            System.out.println("Error SQL: " + ex.getMessage());
+            ex.printStackTrace();
+        }
+        finally {
+            cerrarSesion();
+        }
+
+        return -1;
+    }
+
     private static void cerrarSesion() {
         try {
             rs.close();
@@ -342,4 +460,5 @@ public class ConexionDB {
             Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
 }

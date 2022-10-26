@@ -60,10 +60,6 @@ public class Vista_MiPanel_Borrar extends javax.swing.JPanel {
         txtFieldPregunta = new javax.swing.JTextField();
         radioOpcion3 = new javax.swing.JRadioButton();
         radioOpcion1 = new javax.swing.JRadioButton();
-        lblId1 = new javax.swing.JLabel();
-        lblId2 = new javax.swing.JLabel();
-        lblId3 = new javax.swing.JLabel();
-        lblId4 = new javax.swing.JLabel();
 
         grupoRadio.add(radioOpcion4);
         radioOpcion4.setEnabled(false);
@@ -113,20 +109,6 @@ public class Vista_MiPanel_Borrar extends javax.swing.JPanel {
         grupoRadio.add(radioOpcion1);
         radioOpcion1.setEnabled(false);
 
-        lblId1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblId1.setText("ID");
-
-        lblId2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblId2.setText("ID");
-
-        lblId3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblId3.setText("ID");
-        lblId3.setToolTipText("");
-
-        lblId4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblId4.setText("ID");
-        lblId4.setToolTipText("");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -149,19 +131,12 @@ public class Vista_MiPanel_Borrar extends javax.swing.JPanel {
                                     .addComponent(radioOpcion1, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(radioOpcion3, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(radioOpcion4, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblId1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblId2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(lblId3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblId4, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtFieldOpcion2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtFieldOpcion2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
                                     .addComponent(txtFieldOpcion3, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(txtFieldOpcion4, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtFieldOpcion1)))
+                                    .addComponent(txtFieldOpcion1, javax.swing.GroupLayout.Alignment.TRAILING)))
                             .addComponent(txtFieldPregunta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(23, 23, 23))
         );
@@ -174,29 +149,20 @@ public class Vista_MiPanel_Borrar extends javax.swing.JPanel {
                         .addComponent(txtFieldPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtFieldOpcion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(radioOpcion1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(txtFieldOpcion2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblId2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(radioOpcion2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(radioOpcion3)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(txtFieldOpcion3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblId3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(radioOpcion4)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(txtFieldOpcion4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblId4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(lblId1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtFieldOpcion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(radioOpcion1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtFieldOpcion2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(radioOpcion2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(radioOpcion3)
+                            .addComponent(txtFieldOpcion3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(radioOpcion4)
+                            .addComponent(txtFieldOpcion4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 149, Short.MAX_VALUE))
                     .addComponent(jScrollPane1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -224,10 +190,6 @@ public class Vista_MiPanel_Borrar extends javax.swing.JPanel {
 
         if (listaJPreguntas.getModel().getSize() != 0) {
             this.txtFieldPregunta.setText(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getTituloPreg());
-            this.lblId1.setText(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion1().getId_opcion() + "");
-            this.lblId2.setText(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion2().getId_opcion() + "");
-            this.lblId3.setText(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion3().getId_opcion() + "");
-            this.lblId4.setText(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion4().getId_opcion() + "");
             if (listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion1().isCorrecto()) {
                 radioOpcion1.setSelected(true);
             } else if (listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion2().isCorrecto()) {
@@ -253,7 +215,11 @@ public class Vista_MiPanel_Borrar extends javax.swing.JPanel {
                 || txtFieldOpcion2.getText().equals("Escriba respuesta...") || txtFieldOpcion2.getText().equals("")
                 || txtFieldOpcion3.getText().equals("Escriba respuesta...") || txtFieldOpcion3.getText().equals("")
                 || txtFieldOpcion4.getText().equals("Escriba respuesta...") || txtFieldOpcion4.getText().equals(""))) {
-            int comp = DAOPregunta.getInstance().deletePregunta(new Pregunta(Integer.parseInt(listaJPreguntas.getSelectedValue().charAt(0) + ""), new Opcion(Integer.parseInt(lblId1.getText())), new Opcion(Integer.parseInt(lblId2.getText())), new Opcion(Integer.parseInt(lblId3.getText())), new Opcion(Integer.parseInt(lblId4.getText()))));
+            int comp = DAOPregunta.getInstance().deletePregunta(new Pregunta(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getId_pregunta(), 
+                    new Opcion(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion1().getId_opcion()), 
+                    new Opcion(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion2().getId_opcion()), 
+                    new Opcion(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion3().getId_opcion()), 
+                    new Opcion(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion4().getId_opcion())));
 
             if (comp == 0) {
                 this.actualizarLista();
@@ -265,10 +231,6 @@ public class Vista_MiPanel_Borrar extends javax.swing.JPanel {
                 txtFieldOpcion2.setText("Escriba respuesta...");
                 txtFieldOpcion3.setText("Escriba respuesta...");
                 txtFieldOpcion4.setText("Escriba respuesta...");
-                this.lblId1.setText("ID");
-                this.lblId2.setText("ID");
-                this.lblId3.setText("ID");
-                this.lblId4.setText("ID");
                 
             } else {
                 JOptionPane.showConfirmDialog(this, "Se ha producido un error al borrar la bbdd", "Borrado correcto", JOptionPane.DEFAULT_OPTION);
@@ -280,14 +242,14 @@ public class Vista_MiPanel_Borrar extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBorrarActionPerformed
 
     private void actualizarLista() {
-        listaPreguntas = DAOPregunta.getInstance().getPreguntas();
+        listaPreguntas = DAOPregunta.getInstance().getPreguntas(miVentana.getUsuarioActual());
 
         this.modelo = new DefaultListModel();
 
         for (int i = 0; i < listaPreguntas.size(); i++) {
-            this.modelo.addElement(listaPreguntas.get(i).getId_pregunta() + "-" + listaPreguntas.get(i).getTituloPreg());
+            this.modelo.addElement(listaPreguntas.get(i).getTituloPreg());
         }
-
+        
         this.listaJPreguntas.setModel(this.modelo);
 
         this.updateUI();
@@ -297,10 +259,6 @@ public class Vista_MiPanel_Borrar extends javax.swing.JPanel {
     private javax.swing.JButton btnVolver;
     private javax.swing.ButtonGroup grupoRadio;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblId1;
-    private javax.swing.JLabel lblId2;
-    private javax.swing.JLabel lblId3;
-    private javax.swing.JLabel lblId4;
     private javax.swing.JList<String> listaJPreguntas;
     private javax.swing.JRadioButton radioOpcion1;
     private javax.swing.JRadioButton radioOpcion2;

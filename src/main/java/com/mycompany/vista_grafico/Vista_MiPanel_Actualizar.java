@@ -36,7 +36,7 @@ public class Vista_MiPanel_Actualizar extends javax.swing.JPanel {
         this.miPanelInicio = new Vista_MiPanel_Inicio(this.miVentana);
 
         this.actualizarLista();
-        
+
     }
 
     /**
@@ -58,10 +58,6 @@ public class Vista_MiPanel_Actualizar extends javax.swing.JPanel {
         radioOpcion3 = new javax.swing.JRadioButton();
         radioOpcion2 = new javax.swing.JRadioButton();
         radioOpcion1 = new javax.swing.JRadioButton();
-        lblId1 = new javax.swing.JLabel();
-        lblId2 = new javax.swing.JLabel();
-        lblId3 = new javax.swing.JLabel();
-        lblId4 = new javax.swing.JLabel();
         txtFieldOpcion4 = new javax.swing.JTextField();
         txtFieldOpcion3 = new javax.swing.JTextField();
         txtFieldOpcion2 = new javax.swing.JTextField();
@@ -107,20 +103,6 @@ public class Vista_MiPanel_Actualizar extends javax.swing.JPanel {
 
         grupoRadio.add(radioOpcion1);
         radioOpcion1.setEnabled(false);
-
-        lblId1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblId1.setText("ID");
-
-        lblId2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblId2.setText("ID");
-
-        lblId3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblId3.setText("ID");
-        lblId3.setToolTipText("");
-
-        lblId4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblId4.setText("ID");
-        lblId4.setToolTipText("");
 
         txtFieldOpcion4.setText("Escriba respuesta...");
         txtFieldOpcion4.setEnabled(false);
@@ -171,28 +153,21 @@ public class Vista_MiPanel_Actualizar extends javax.swing.JPanel {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(txtFieldPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(radioOpcion2, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(radioOpcion1, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(radioOpcion3, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(radioOpcion4, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblId1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblId2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(lblId3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblId4, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtFieldOpcion2, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtFieldOpcion3, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtFieldOpcion3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
                                     .addComponent(txtFieldOpcion4, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtFieldOpcion1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(txtFieldOpcion2, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtFieldOpcion1)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(txtFieldPregunta)))))
                 .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
@@ -204,29 +179,20 @@ public class Vista_MiPanel_Actualizar extends javax.swing.JPanel {
                         .addComponent(txtFieldPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtFieldOpcion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(radioOpcion1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(txtFieldOpcion2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblId2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(radioOpcion2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(radioOpcion3)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(txtFieldOpcion3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblId3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(radioOpcion4)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(txtFieldOpcion4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblId4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(lblId1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtFieldOpcion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(radioOpcion1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtFieldOpcion2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(radioOpcion2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(radioOpcion3)
+                            .addComponent(txtFieldOpcion3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(radioOpcion4)
+                            .addComponent(txtFieldOpcion4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -392,10 +358,6 @@ public class Vista_MiPanel_Actualizar extends javax.swing.JPanel {
         txtFieldOpcion2.setText(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion2().getTxtOpcion());
         txtFieldOpcion3.setText(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion3().getTxtOpcion());
         txtFieldOpcion4.setText(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion4().getTxtOpcion());
-        this.lblId1.setText(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion1().getId_opcion() + "");
-        this.lblId2.setText(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion2().getId_opcion() + "");
-        this.lblId3.setText(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion3().getId_opcion() + "");
-        this.lblId4.setText(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion4().getId_opcion() + "");
 
     }//GEN-LAST:event_listaJPreguntasMouseClicked
 
@@ -416,12 +378,12 @@ public class Vista_MiPanel_Actualizar extends javax.swing.JPanel {
     }//GEN-LAST:event_txtFieldOpcion4MouseClicked
 
     private void actualizarLista() {
-        listaPreguntas = DAOPregunta.getInstance().getPreguntas();
+        listaPreguntas = DAOPregunta.getInstance().getPreguntas(miVentana.getUsuarioActual());
 
         this.modelo = new DefaultListModel();
 
         for (int i = 0; i < listaPreguntas.size(); i++) {
-            this.modelo.addElement(listaPreguntas.get(i).getId_pregunta() + "-" + listaPreguntas.get(i).getTituloPreg());
+            this.modelo.addElement(listaPreguntas.get(i).getTituloPreg());
         }
 
         this.listaJPreguntas.setModel(this.modelo);
@@ -435,10 +397,6 @@ public class Vista_MiPanel_Actualizar extends javax.swing.JPanel {
     private javax.swing.JButton btnVolver;
     private javax.swing.ButtonGroup grupoRadio;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblId1;
-    private javax.swing.JLabel lblId2;
-    private javax.swing.JLabel lblId3;
-    private javax.swing.JLabel lblId4;
     private javax.swing.JList<String> listaJPreguntas;
     private javax.swing.JRadioButton radioOpcion1;
     private javax.swing.JRadioButton radioOpcion2;

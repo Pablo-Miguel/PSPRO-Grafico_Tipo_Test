@@ -19,6 +19,10 @@ public class Usuario {
         this.nombre = nombre;
     }
     
+    public Usuario(String nombre) {
+        this.nombre = nombre;
+    }
+    
     public Integer getIdUsuario() {
         return idUsuario;
     }
