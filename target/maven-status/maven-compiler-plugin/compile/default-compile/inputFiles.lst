@@ -1,12 +1,18 @@
-G:\Mi unidad\1ºDAM\Programacion\ProyectosNetBeans\Grafico_Tipo_Test\src\main\java\com\mycompany\modelo_grafico\Opcion.java
-G:\Mi unidad\1ºDAM\Programacion\ProyectosNetBeans\Grafico_Tipo_Test\src\main\java\com\mycompany\vista_grafico\Vista_MiPanel_Actualizar.java
-G:\Mi unidad\1ºDAM\Programacion\ProyectosNetBeans\Grafico_Tipo_Test\src\main\java\com\mycompany\servicio_grafico\Servicio.java
-G:\Mi unidad\1ºDAM\Programacion\ProyectosNetBeans\Grafico_Tipo_Test\src\main\java\com\mycompany\vista_grafico\Vista_MiPanel_Resul.java
-G:\Mi unidad\1ºDAM\Programacion\ProyectosNetBeans\Grafico_Tipo_Test\src\main\java\com\mycompany\vista_grafico\Vista_MiVentana.java
-G:\Mi unidad\1ºDAM\Programacion\ProyectosNetBeans\Grafico_Tipo_Test\src\main\java\com\mycompany\vista_grafico\Vista_MiPanel_Preg.java
-G:\Mi unidad\1ºDAM\Programacion\ProyectosNetBeans\Grafico_Tipo_Test\src\main\java\com\mycompany\modelo_grafico\Pregunta.java
-G:\Mi unidad\1ºDAM\Programacion\ProyectosNetBeans\Grafico_Tipo_Test\src\main\java\com\mycompany\vista_grafico\Vista_MiPanel_Borrar.java
-G:\Mi unidad\1ºDAM\Programacion\ProyectosNetBeans\Grafico_Tipo_Test\src\main\java\com\mycompany\grafico_tipo_test\Grafico_Tipo_Test.java
-G:\Mi unidad\1ºDAM\Programacion\ProyectosNetBeans\Grafico_Tipo_Test\src\main\java\com\mycompany\vista_grafico\Vista_MiPanel_Nuevo.java
-G:\Mi unidad\1ºDAM\Programacion\ProyectosNetBeans\Grafico_Tipo_Test\src\main\java\com\mycompany\vista_grafico\Vista_MiPanel_Inicio.java
-G:\Mi unidad\1ºDAM\Programacion\ProyectosNetBeans\Grafico_Tipo_Test\src\main\java\com\mycompany\dao_grafico\DAOPregunta.java
+C:\Users\Dam\2DAM\PSPRO\NetBeansProjects\PSPRO-Grafico_Tipo_Test\src\main\java\com\mycompany\servicio_grafico\Servicio.java
+C:\Users\Dam\2DAM\PSPRO\NetBeansProjects\PSPRO-Grafico_Tipo_Test\src\main\java\com\mycompany\dao_grafico\DAOPregunta.java
+C:\Users\Dam\2DAM\PSPRO\NetBeansProjects\PSPRO-Grafico_Tipo_Test\src\main\java\com\mycompany\vista_grafico\Vista_MiPanel_Borrar.java
+C:\Users\Dam\2DAM\PSPRO\NetBeansProjects\PSPRO-Grafico_Tipo_Test\src\main\java\com\mycompany\vista_grafico\Vista_MiPanel_Inicio.java
+C:\Users\Dam\2DAM\PSPRO\NetBeansProjects\PSPRO-Grafico_Tipo_Test\src\main\java\com\mycompany\vista_grafico\Vista_MiPanel_Nuevo.java
+C:\Users\Dam\2DAM\PSPRO\NetBeansProjects\PSPRO-Grafico_Tipo_Test\src\main\java\com\mycompany\modelo_grafico\Opcion.java
+C:\Users\Dam\2DAM\PSPRO\NetBeansProjects\PSPRO-Grafico_Tipo_Test\src\main\java\com\mycompany\vista_grafico\Vista_MiPanel_UsuarioBorrar.java
+C:\Users\Dam\2DAM\PSPRO\NetBeansProjects\PSPRO-Grafico_Tipo_Test\src\main\java\com\mycompany\vista_grafico\Vista_MiPanel_Preg.java
+C:\Users\Dam\2DAM\PSPRO\NetBeansProjects\PSPRO-Grafico_Tipo_Test\src\main\java\com\mycompany\vista_grafico\Vista_MiPanel_UsuarioNuevo.java
+C:\Users\Dam\2DAM\PSPRO\NetBeansProjects\PSPRO-Grafico_Tipo_Test\src\main\java\com\mycompany\vista_grafico\Vista_MiPanel_Actualizar.java
+C:\Users\Dam\2DAM\PSPRO\NetBeansProjects\PSPRO-Grafico_Tipo_Test\src\main\java\com\mycompany\modelo_grafico\Usuario.java
+C:\Users\Dam\2DAM\PSPRO\NetBeansProjects\PSPRO-Grafico_Tipo_Test\src\main\java\com\mycompany\vista_grafico\Vista_MiPanel_UsuarioCambiar.java
+C:\Users\Dam\2DAM\PSPRO\NetBeansProjects\PSPRO-Grafico_Tipo_Test\src\main\java\com\mycompany\modelo_grafico\Pregunta.java
+C:\Users\Dam\2DAM\PSPRO\NetBeansProjects\PSPRO-Grafico_Tipo_Test\src\main\java\com\mycompany\vista_grafico\Vista_MiVentana.java
+C:\Users\Dam\2DAM\PSPRO\NetBeansProjects\PSPRO-Grafico_Tipo_Test\src\main\java\com\mycompany\dao_grafico\ConexionDB.java
+C:\Users\Dam\2DAM\PSPRO\NetBeansProjects\PSPRO-Grafico_Tipo_Test\src\main\java\com\mycompany\vista_grafico\Vista_MiPanel_Resul.java
+C:\Users\Dam\2DAM\PSPRO\NetBeansProjects\PSPRO-Grafico_Tipo_Test\src\main\java\com\mycompany\grafico_tipo_test\Grafico_Tipo_Test.java
+C:\Users\Dam\2DAM\PSPRO\NetBeansProjects\PSPRO-Grafico_Tipo_Test\src\main\java\com\mycompany\vista_grafico\Vista_MiPanel_UsuarioActualizar.java

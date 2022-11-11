@@ -33,7 +33,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>com.mycompany.vista_grafico.Vista_MiVentana</mainClass>
+                            <mainClass>com.mycompany.grafico_tipo_test.Grafico_Tipo_Test</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
