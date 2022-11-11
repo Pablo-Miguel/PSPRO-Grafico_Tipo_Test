@@ -18,6 +18,7 @@ public class Vista_MiPanel_Resul extends javax.swing.JPanel {
     
     private ArrayList<Opcion> listaAciertos;
     private Integer contAciertos = 0;
+    public Double nota;
     
     /**
      * Creates new form Vista_MiPanel_Resul
@@ -41,6 +42,9 @@ public class Vista_MiPanel_Resul extends javax.swing.JPanel {
         }
         
         lblResultado.setText("Resultado: " + contAciertos + " / " + listaAciertos.size());
+       
+        
+        this.nota = Math.round(((contAciertos * 10.0) / listaAciertos.size()) * 100) / 100.0;
         
         this.miVentana.setMenuOculto();
         
