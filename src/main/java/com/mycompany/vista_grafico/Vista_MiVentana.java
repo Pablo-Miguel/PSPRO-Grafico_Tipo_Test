@@ -4,6 +4,7 @@
  */
 package com.mycompany.vista_grafico;
 
+import com.mycompany.dao_grafico.ConexionDB;
 import com.mycompany.dao_grafico.DAOPregunta;
 import com.mycompany.modelo_grafico.Usuario;
 import javax.swing.JMenu;
@@ -29,7 +30,7 @@ public class Vista_MiVentana extends javax.swing.JFrame {
         if(!DAOPregunta.getInstance().getUsuarios().isEmpty()){
             usuarioActual = DAOPregunta.getInstance().getUsuarios().get(0);
         }
-        
+ 
         miPanelInicio = new Vista_MiPanel_Inicio(this);
         
         panelActivo = miPanelInicio;

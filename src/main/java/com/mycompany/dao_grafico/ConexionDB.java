@@ -28,13 +28,14 @@ public class ConexionDB {
     static String password = "";
     static String url = "jdbc:mysql://localhost/" + bd;
 
-    private static void enlace() {
+    private static void enlace() throws Exception {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(url, login, password);
             System.out.println("Conexión exitosa");
         } catch (SQLException ex) {
-            System.out.println("Excepicon en la conexión");
+            System.out.println("Excepcion en la conexión");
+            throw new Exception("No se encuentra la bbdd"); 
         } catch (ClassNotFoundException ex) {
             System.out.println("No se encuentra la clase");
         } catch (Exception ex) {
@@ -42,7 +43,7 @@ public class ConexionDB {
         }
     }
 
-    public static void insertarPregunta(Pregunta pregunta, Usuario usuario) throws SQLException, SQLIntegrityConstraintViolationException {
+    public static void insertarPregunta(Pregunta pregunta, Usuario usuario) throws SQLException, SQLIntegrityConstraintViolationException, Exception {
 
         enlace();
 
@@ -109,7 +110,7 @@ public class ConexionDB {
 
     }
 
-    public static void insertarUsuario(Usuario usuario) throws SQLException, SQLIntegrityConstraintViolationException {
+    public static void insertarUsuario(Usuario usuario) throws SQLException, SQLIntegrityConstraintViolationException, Exception {
         enlace();
 
         try {
@@ -143,7 +144,7 @@ public class ConexionDB {
         cerrarSesion();
     }
 
-    public static List<Pregunta> getPreguntas(Usuario usuario) {
+    public static List<Pregunta> getPreguntas(Usuario usuario) throws Exception {
 
         enlace();
         List<Pregunta> listaPreguntas = null;
@@ -211,7 +212,7 @@ public class ConexionDB {
 
     }
 
-    public static List<Usuario> getUsuarios() {
+    public static List<Usuario> getUsuarios() throws Exception {
 
         enlace();
         List<Usuario> listaUsuarios = null;
@@ -242,7 +243,7 @@ public class ConexionDB {
 
     }
 
-    public static Pregunta getPregunta(Pregunta pregunta) {
+    public static Pregunta getPregunta(Pregunta pregunta) throws Exception {
 
         Pregunta preguntaDB = null;
         enlace();
@@ -285,7 +286,7 @@ public class ConexionDB {
         return preguntaDB;
     }
 
-    public static int updatePregunta(Pregunta pregunta) {
+    public static int updatePregunta(Pregunta pregunta) throws Exception {
         enlace();
 
         try {
@@ -327,7 +328,7 @@ public class ConexionDB {
         return 0;
     }
 
-    public static int updateUsuario(Usuario usuario) {
+    public static int updateUsuario(Usuario usuario) throws Exception {
         enlace();
 
         try {
@@ -353,7 +354,7 @@ public class ConexionDB {
         return 0;
     }
 
-    public static Integer deletePregunta(Pregunta pregunta) {
+    public static Integer deletePregunta(Pregunta pregunta) throws Exception {
 
         enlace();
 
@@ -394,7 +395,7 @@ public class ConexionDB {
         return -1;
     }
 
-    public static int deleteUsuario(Usuario usuario) {
+    public static int deleteUsuario(Usuario usuario) throws Exception {
         
         List<Pregunta> listaPreguntas = ConexionDB.getPreguntas(usuario);
         

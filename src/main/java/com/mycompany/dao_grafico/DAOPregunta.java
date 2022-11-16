@@ -10,6 +10,8 @@ import com.mycompany.modelo_grafico.Usuario;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -22,7 +24,7 @@ public class DAOPregunta {
     private static ArrayList<Pregunta> listaPreguntas = null;
     private static ArrayList<Usuario> listaUsuarios = null;
 
-    private DAOPregunta() {
+    protected DAOPregunta() {
         //Constructor
     }
 
@@ -46,7 +48,11 @@ public class DAOPregunta {
     //Read
     public ArrayList<Usuario> getUsuarios() {
 
-        listaUsuarios = (ArrayList<Usuario>) ConexionDB.getUsuarios();
+        try {
+            listaUsuarios = (ArrayList<Usuario>) ConexionDB.getUsuarios();
+        } catch (Exception ex) {
+            return new ArrayList<Usuario>();
+        }
         return listaUsuarios;
 
     }
@@ -54,7 +60,11 @@ public class DAOPregunta {
     //Read
     public ArrayList<Pregunta> getPreguntas(Usuario usuario) {
 
-        listaPreguntas = (ArrayList<Pregunta>) ConexionDB.getPreguntas(usuario);
+        try {
+            listaPreguntas = (ArrayList<Pregunta>) ConexionDB.getPreguntas(usuario);
+        } catch (Exception ex) {
+            return null;
+        }
         return listaPreguntas;
 
     }
@@ -68,6 +78,8 @@ public class DAOPregunta {
             return 1;
         } catch (SQLException ex) {
             return -1;
+        } catch (Exception ex) {
+            return -1;
         }
     }
     
@@ -80,6 +92,8 @@ public class DAOPregunta {
             return 1;
         } catch (SQLException ex) {
             return -1;
+        } catch (Exception ex) {
+            return -1;
         }
         
     }
@@ -87,25 +101,41 @@ public class DAOPregunta {
     //Update
     public int updatePregunta(Pregunta pregunta) {
         
-        return ConexionDB.updatePregunta(pregunta);
+        try {
+            return ConexionDB.updatePregunta(pregunta);
+        } catch (Exception ex) {
+            return -1;
+        }
         
     }
     
     //Update
     public int actualizarUsuario(Usuario usuario) {
         
-        return ConexionDB.updateUsuario(usuario);
+        try {
+            return ConexionDB.updateUsuario(usuario);
+        } catch (Exception ex) {
+            return -1;
+        }
         
     }
     
     //Delete
     public int deletePregunta(Pregunta pregunta) {
-        return ConexionDB.deletePregunta(pregunta);
+        try {
+            return ConexionDB.deletePregunta(pregunta);
+        } catch (Exception ex) {
+            return -1;
+        }
     }
     
     //Delete
     public int borrarUsuario(Usuario usuario) {
-        return ConexionDB.deleteUsuario(usuario);
+        try {
+            return ConexionDB.deleteUsuario(usuario);
+        } catch (Exception ex) {
+            return -1;
+        }
     }
 
 }

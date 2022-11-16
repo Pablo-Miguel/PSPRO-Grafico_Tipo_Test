@@ -15,6 +15,18 @@ public class Pregunta {
     private Integer id_pregunta;
     private String tituloPreg;
     private Opcion opcion1, opcion2, opcion3, opcion4;
+    private Usuario usuario;
+    
+    public Pregunta(Integer id_pregunta, String tituloPreg, Opcion opcion1, Opcion opcion2, Opcion opcion3, Opcion opcion4, Usuario usuario) {
+        this.id_pregunta = id_pregunta;
+        this.tituloPreg = tituloPreg;
+        this.opcion1 = opcion1;
+        this.opcion2 = opcion2;
+        this.opcion3 = opcion3;
+        this.opcion4 = opcion4;
+        this.usuario = usuario;
+        
+    }
 
     public Pregunta(Integer id_pregunta, String tituloPreg, Opcion opcion1, Opcion opcion2, Opcion opcion3, Opcion opcion4) {
         this.id_pregunta = id_pregunta;
@@ -89,6 +101,14 @@ public class Pregunta {
 
     public void setOpcion4(Opcion opcion4) {
         this.opcion4 = opcion4;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     @Override

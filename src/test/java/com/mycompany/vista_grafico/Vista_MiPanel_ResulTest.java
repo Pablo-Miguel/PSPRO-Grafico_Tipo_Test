@@ -6,6 +6,7 @@ package com.mycompany.vista_grafico;
 
 import com.mycompany.modelo_grafico.Opcion;
 import java.util.ArrayList;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,10 +16,17 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class Vista_MiPanel_ResulTest {
     
+    private MockVista_MiVentana miVista;
+    
     public Vista_MiPanel_ResulTest() {
     }
-
-    @Test
+    
+    @BeforeEach
+    public void setUp() {
+        miVista = new MockVista_MiVentana();
+    }
+    
+     @Test
     public void comprobarResultadoNota1() {
         ArrayList<Opcion> lista = new ArrayList<Opcion>();
         lista.add(new Opcion("", true));
@@ -26,7 +34,7 @@ public class Vista_MiPanel_ResulTest {
         lista.add(new Opcion("", false));
         lista.add(new Opcion("", true));
         
-        Vista_MiPanel_Resul panel = new Vista_MiPanel_Resul(new Vista_MiVentana(),  lista);
+        Vista_MiPanel_Resul panel = new Vista_MiPanel_Resul(miVista,  lista);
         
         assertEquals(7.5, panel.nota);
     }
