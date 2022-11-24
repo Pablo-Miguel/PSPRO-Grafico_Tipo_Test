@@ -17,6 +17,7 @@ public class MockVista_MiVentana extends Vista_MiVentana{
     private Usuario usuarioActual;
     
     public MockVista_MiVentana() {
+        super();
         
         if(!MockDAOPregunta.getInstance().getUsuarios().isEmpty()){
             usuarioActual = MockDAOPregunta.getInstance().getUsuarios().get(0);

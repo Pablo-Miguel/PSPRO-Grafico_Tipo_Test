@@ -4,26 +4,38 @@
  */
 package com.mycompany.vista_grafico;
 
+import com.mycompany.dao_grafico.DAOPregunta;
 import com.mycompany.modelo_grafico.Opcion;
+import com.mycompany.modelo_grafico.Usuario;
 import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import static org.mockito.Mockito.when;
+import org.mockito.junit.MockitoJUnitRunner;
 
 /**
  *
  * @author Nitro
  */
+@RunWith(MockitoJUnitRunner.class)
 public class Vista_MiPanel_ResulTest {
     
+    @InjectMocks
     private MockVista_MiVentana miVista;
+    
+    @Mock
+    private DAOPregunta daoPreguntas;
     
     public Vista_MiPanel_ResulTest() {
     }
     
     @BeforeEach
     public void setUp() {
-        miVista = new MockVista_MiVentana();
+        
     }
     
      @Test
@@ -34,9 +46,13 @@ public class Vista_MiPanel_ResulTest {
         lista.add(new Opcion("", false));
         lista.add(new Opcion("", true));
         
-        Vista_MiPanel_Resul panel = new Vista_MiPanel_Resul(miVista,  lista);
+        ArrayList<Usuario> listaUsuarios = new ArrayList<Usuario>();
+        listaUsuarios.add(new Usuario(1, "Pablo Miguel"));
         
-        assertEquals(7.5, panel.nota);
+        when(new Vista_MiVentana()).thenReturn(miVista);
+        when(miVista.getUsuarioActual()).thenReturn(listaUsuarios.get(0));
+        
+        assertEquals(7.5, new Vista_MiPanel_Resul(new Vista_MiVentana(),  lista).nota);
     }
     
     @Test
@@ -47,7 +63,7 @@ public class Vista_MiPanel_ResulTest {
         lista.add(new Opcion("", false));
         lista.add(new Opcion("", true));
         
-        Vista_MiPanel_Resul panel = new Vista_MiPanel_Resul(new Vista_MiVentana(),  lista);
+        Vista_MiPanel_Resul panel = new Vista_MiPanel_Resul(new MockVista_MiVentana(),  lista);
         
         assertEquals(5.0, panel.nota);
     }
@@ -71,7 +87,7 @@ public class Vista_MiPanel_ResulTest {
         lista.add(new Opcion("", false));
         lista.add(new Opcion("", true));
         
-        Vista_MiPanel_Resul panel = new Vista_MiPanel_Resul(new Vista_MiVentana(),  lista);
+        Vista_MiPanel_Resul panel = new Vista_MiPanel_Resul(new MockVista_MiVentana(),  lista);
         
         assertEquals(6.67, panel.nota);
     }
