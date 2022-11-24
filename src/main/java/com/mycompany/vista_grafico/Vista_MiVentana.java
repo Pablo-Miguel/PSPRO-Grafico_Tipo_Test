@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 public class Vista_MiVentana extends javax.swing.JFrame {
     
     private Usuario usuarioActual;
+    private DAOPregunta daoPregunta;
     
     JPanel panelActivo;
     Vista_MiPanel_Inicio miPanelInicio;
@@ -27,8 +28,10 @@ public class Vista_MiVentana extends javax.swing.JFrame {
     public Vista_MiVentana() {
         initComponents();
         
-        if(!DAOPregunta.getInstance().getUsuarios().isEmpty()){
-            usuarioActual = DAOPregunta.getInstance().getUsuarios().get(0);
+        daoPregunta = DAOPregunta.getInstance();
+        
+        if(!daoPregunta.getUsuarios().isEmpty()){
+            usuarioActual = daoPregunta.getUsuarios().get(0);
         }
  
         miPanelInicio = new Vista_MiPanel_Inicio(this);
@@ -143,7 +146,16 @@ public class Vista_MiVentana extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+    
+    public DAOPregunta getDaoPregunta() {
+        return daoPregunta;
+    }
 
+    public void setDaoPregunta(DAOPregunta daoPregunta) {
+        this.daoPregunta = daoPregunta;
+    }
+    
+    
     private void menuNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNuevoActionPerformed
         // TODO add your handling code here:
         

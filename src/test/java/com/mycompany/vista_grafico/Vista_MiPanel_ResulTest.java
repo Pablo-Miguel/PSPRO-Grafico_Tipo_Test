@@ -12,8 +12,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import org.mockito.junit.MockitoJUnitRunner;
 
@@ -24,13 +23,40 @@ import org.mockito.junit.MockitoJUnitRunner;
 @RunWith(MockitoJUnitRunner.class)
 public class Vista_MiPanel_ResulTest {
     
-    @InjectMocks
-    private MockVista_MiVentana miVista;
-    
-    @Mock
-    private DAOPregunta daoPreguntas;
+    private ArrayList<Usuario> listaUsuarios;
+    private ArrayList<Opcion> lista1;
+    private ArrayList<Opcion> lista2;
+    private ArrayList<Opcion> lista3;
     
     public Vista_MiPanel_ResulTest() {
+        this.listaUsuarios = new ArrayList<Usuario>();
+        listaUsuarios.add(new Usuario(1, "Pablo Miguel"));
+        lista1 = new ArrayList<Opcion>();
+        lista1.add(new Opcion("", true));
+        lista1.add(new Opcion("", true));
+        lista1.add(new Opcion("", false));
+        lista1.add(new Opcion("", true));
+        lista2 = new ArrayList<Opcion>();
+        lista2.add(new Opcion("", false));
+        lista2.add(new Opcion("", true));
+        lista2.add(new Opcion("", false));
+        lista2.add(new Opcion("", true));
+        lista3 = new ArrayList<Opcion>();
+        lista3.add(new Opcion("", false));
+        lista3.add(new Opcion("", true));
+        lista3.add(new Opcion("", false));
+        lista3.add(new Opcion("", true));
+        lista3.add(new Opcion("", true));
+        lista3.add(new Opcion("", true));
+        lista3.add(new Opcion("", true));
+        lista3.add(new Opcion("", false));
+        lista3.add(new Opcion("", true));
+        lista3.add(new Opcion("", true));
+        lista3.add(new Opcion("", false));
+        lista3.add(new Opcion("", true));
+        lista3.add(new Opcion("", true));
+        lista3.add(new Opcion("", false));
+        lista3.add(new Opcion("", true));
     }
     
     @BeforeEach
@@ -40,56 +66,47 @@ public class Vista_MiPanel_ResulTest {
     
      @Test
     public void comprobarResultadoNota1() {
-        ArrayList<Opcion> lista = new ArrayList<Opcion>();
-        lista.add(new Opcion("", true));
-        lista.add(new Opcion("", true));
-        lista.add(new Opcion("", false));
-        lista.add(new Opcion("", true));
         
-        ArrayList<Usuario> listaUsuarios = new ArrayList<Usuario>();
-        listaUsuarios.add(new Usuario(1, "Pablo Miguel"));
+        DAOPregunta daoPregunta = mock(DAOPregunta.class);
+        when(daoPregunta.getUsuarios()).thenReturn(this.listaUsuarios);
         
-        when(new Vista_MiVentana()).thenReturn(miVista);
-        when(miVista.getUsuarioActual()).thenReturn(listaUsuarios.get(0));
+        Vista_MiVentana ventana = new Vista_MiVentana();
+        ventana.setDaoPregunta(daoPregunta);
+        Vista_MiPanel_Resul panel = new Vista_MiPanel_Resul(ventana, lista1);
         
-        assertEquals(7.5, new Vista_MiPanel_Resul(new Vista_MiVentana(),  lista).nota);
+        System.out.println("USUARIO: " + ventana.getDaoPregunta().getUsuarios().get(0).toString());
+        
+        assertEquals(7.5, panel.nota, 0.1);
     }
     
     @Test
     public void comprobarResultadoNota2() {
-        ArrayList<Opcion> lista = new ArrayList<Opcion>();
-        lista.add(new Opcion("", false));
-        lista.add(new Opcion("", true));
-        lista.add(new Opcion("", false));
-        lista.add(new Opcion("", true));
         
-        Vista_MiPanel_Resul panel = new Vista_MiPanel_Resul(new MockVista_MiVentana(),  lista);
+        DAOPregunta daoPregunta = mock(DAOPregunta.class);
+        when(daoPregunta.getUsuarios()).thenReturn(this.listaUsuarios);
         
-        assertEquals(5.0, panel.nota);
+        Vista_MiVentana ventana = new Vista_MiVentana();
+        ventana.setDaoPregunta(daoPregunta);
+        Vista_MiPanel_Resul panel = new Vista_MiPanel_Resul(ventana, lista2);
+        
+        System.out.println("USUARIO: " + ventana.getDaoPregunta().getUsuarios().get(0).toString());
+        
+        assertEquals(5.0, panel.nota, 0.1);
     }
     
     @Test
     public void comprobarResultadoNota3() {
-        ArrayList<Opcion> lista = new ArrayList<Opcion>();
-        lista.add(new Opcion("", false));
-        lista.add(new Opcion("", true));
-        lista.add(new Opcion("", false));
-        lista.add(new Opcion("", true));
-        lista.add(new Opcion("", true));
-        lista.add(new Opcion("", true));
-        lista.add(new Opcion("", true));
-        lista.add(new Opcion("", false));
-        lista.add(new Opcion("", true));
-        lista.add(new Opcion("", true));
-        lista.add(new Opcion("", false));
-        lista.add(new Opcion("", true));
-        lista.add(new Opcion("", true));
-        lista.add(new Opcion("", false));
-        lista.add(new Opcion("", true));
         
-        Vista_MiPanel_Resul panel = new Vista_MiPanel_Resul(new MockVista_MiVentana(),  lista);
+        DAOPregunta daoPregunta = mock(DAOPregunta.class);
+        when(daoPregunta.getUsuarios()).thenReturn(this.listaUsuarios);
         
-        assertEquals(6.67, panel.nota);
+        Vista_MiVentana ventana = new Vista_MiVentana();
+        ventana.setDaoPregunta(daoPregunta);
+        Vista_MiPanel_Resul panel = new Vista_MiPanel_Resul(ventana, lista3);
+        
+        System.out.println("USUARIO: " + ventana.getDaoPregunta().getUsuarios().get(0).toString());
+        
+        assertEquals(6.67, panel.nota, 0.1);
     }
     
 }
