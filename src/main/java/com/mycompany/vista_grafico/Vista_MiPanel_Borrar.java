@@ -86,6 +86,7 @@ public class Vista_MiPanel_Borrar extends javax.swing.JPanel {
         txtFieldOpcion4.setEditable(false);
         txtFieldOpcion4.setText("Escriba respuesta...");
 
+        listaJPreguntas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         listaJPreguntas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 listaJPreguntasMouseClicked(evt);
@@ -187,7 +188,7 @@ public class Vista_MiPanel_Borrar extends javax.swing.JPanel {
 
     private void listaJPreguntasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaJPreguntasMouseClicked
         // TODO add your handling code here:
-
+        
         if (listaJPreguntas.getModel().getSize() != 0) {
             this.txtFieldPregunta.setText(listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getTituloPreg());
             if (listaPreguntas.get(listaJPreguntas.getSelectedIndex()).getOpcion1().isCorrecto()) {

@@ -12,6 +12,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -22,6 +24,14 @@ import org.mockito.junit.MockitoJUnitRunner;
  */
 @RunWith(MockitoJUnitRunner.class)
 public class Vista_MiPanel_ResulTest {
+    
+    //@Test(expected=BRException.class)
+    //fail("Lanzada excepcion no esperada BOException");
+    
+    //@InjectMocks
+    //@Mock
+    //Mockito.when(mockedList.get(1)).thenThrow(new RuntimeException());
+    //Mockito.verify(outputClass).printOutput("Hello - World");
     
     private ArrayList<Usuario> listaUsuarios;
     private ArrayList<Opcion> lista1;
